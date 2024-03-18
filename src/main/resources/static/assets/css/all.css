@@ -1,0 +1,87 @@
+body {
+    padding-top: 61px;
+}
+
+.navbar {
+  height: 60px;
+  background-color: rgba(83, 87, 146, 1);
+  color: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: rgba(83, 87, 146, 1);
+  height: 100vh;
+  opacity: 1;
+  transition: width 0.3s ease-in-out;
+  position: fixed; 
+}
+
+.sidebar-menu {
+  padding: 20px;
+  list-style: none;
+}
+
+.sidebar-menu li {
+  margin-bottom: 10px;
+}
+
+.sidebar-menu li a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: block;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.sidebar-menu li a:hover {
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-menu li a i {
+  margin-right: 10px;
+}
+
+.sidebar-menu .dropdown-menu {
+  background-color: rgb(147, 149, 182);
+}
+
+.toggle {
+  margin-left: 10px;
+  color: black;
+}
+
+.hidden {
+  display: none;
+}
+
+.main-content {
+  margin-left: 250px;
+  padding: 20px;
+}
+
+.user-role {
+  flex: 1;
+  text-align: center;
+  color: #000;
+}
+
+.profil {
+  margin-right: 10px;
+  color: #222020;
+}
+
+.user-icon {
+  font-size: 1.5rem;
+  margin-right: 5px;
+}
+
+.sidebar-menu li.active a {
+  color: #fff; /* Couleur du texte pour la page active */
+  background-color: rgba(255, 255, 255, 0.1); /* Fond pour la page active */
+}
