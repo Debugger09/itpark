@@ -9,7 +9,7 @@ import jakarta.persistence.*;
 @Table(name = "interventions")
 public class Interventions {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String responsable;
     private String action_requise;

@@ -9,7 +9,7 @@ import jakarta.persistence.*;
 @Table(name = "inventaires")
 public class Inventaires {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Date date_inventaire;
     private String responsable;

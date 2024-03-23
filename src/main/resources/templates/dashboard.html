@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Dashbord</title>
+</head>
+<body>
+<div  layout:fragment="content" class="container">
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card-counter primary">
+                <i class="fa fa-users"></i>
+
+                <span class="count-numbers" th:text="${employe}"></span>
+                <span class="float-end count-name">Employes</span>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card-counter danger">
+                <i class="fa fa-computer"></i>
+                <span class="count-numbers" th:text="${materiel}"></span>
+                <span class="float-end count-name">Materiels</span>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card-counter success">
+                <i class="fa-brands fa-uncharted"></i>
+                <span class="count-numbers" th:text="${logiciel}"></span>
+                <span class="float-end count-name">Logiciels</span>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card-counter info">
+                <i class="fa fa-users"></i>
+                <span class="count-numbers">0</span>
+                <span class="float-end count-name">Users</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

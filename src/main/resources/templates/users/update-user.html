@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un utilisateur</title>
+</head>
+<body>
+
+<div class="row justify-content-center" layout:fragment="content">
+    <div class="col-10">
+        <div class="card">
+            <div class="card-header">
+               Modifier un utilisateur
+            </div>
+            <div class="card-body">
+
+                <form th:object="${user}" method="post" th:action="@{/user-update/{id}(id=${id})}" class="row">
+
+                    <div class="col-12">
+                        <label for="nom" class="form-label">Nom</label>
+                        <input type="text" id="nom" class="form-control"  th:field="*{name}">
+                        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="login" class="form-label">Login</label>
+                        <input type="text" id="login" class="form-control" name="login"  th:field="*{login}">
+                        <span th:if="${#fields.hasErrors('login')}" th:errors="*{login}" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="password" class="form-label">Mot de passe</label>
+                        <input type="password" id="password" class="form-control" name="password" >
+                        <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger"></span>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox"  id="status" name="status">
+                            <label class="form-check-label" for="status">
+                                Activer le compte
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <button class="btn btn-primary float-end">Modifier</button>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

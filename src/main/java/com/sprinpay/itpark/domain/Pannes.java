@@ -9,14 +9,14 @@ import jakarta.persistence.*;
 @Table(name = "pannes")
 public class Pannes {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String diagnostic;
     private Date date_diagnostic;
 
     @ManyToOne
     @JoinColumn(name = "id_materiel")
-    private Materiels materiel;
+    private Materiel materiel;
 
     // Getters
     public Long getId() {
@@ -31,7 +31,7 @@ public class Pannes {
         return date_diagnostic;
     }
 
-    public Materiels getMateriel() {
+    public Materiel getMateriel() {
         return materiel;
     }
 
@@ -48,7 +48,7 @@ public class Pannes {
         this.date_diagnostic = date_diagnostic;
     }
 
-    public void setMateriel(Materiels materiel) {
+    public void setMateriel(Materiel materiel) {
         this.materiel = materiel;
     }
 

@@ -3,6 +3,7 @@ package com.sprinpay.itpark.domain;
 import java.util.Objects;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "employes")
@@ -11,10 +12,13 @@ public class Employes {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Champ requis")
     private String nom;
+    @NotBlank(message = "Champ requis")
     private String email;
+    @NotBlank(message = "Champ requis")
     private String poste;
-    private String accord_sortie;
+    private boolean accordSortie;
 
     @ManyToOne
     @JoinColumn(name = "id_services")
@@ -38,9 +42,7 @@ public class Employes {
         return poste;
     }
 
-    public String getAccord_sortie() {
-        return accord_sortie;
-    }
+
 
     // Setters
     public void setId(Long id) {
@@ -59,8 +61,12 @@ public class Employes {
         this.poste = poste;
     }
 
-    public void setAccord_sortie(String accord_sortie) {
-        this.accord_sortie = accord_sortie;
+    public boolean getAccordSortie() {
+        return accordSortie;
+    }
+
+    public void setAccordSortie(boolean accordSortie) {
+        this.accordSortie = accordSortie;
     }
 
     // Getter et Setter pour la relation Service
@@ -84,12 +90,24 @@ public class Employes {
                 Objects.equals(nom, employes.nom) &&
                 Objects.equals(email, employes.email) &&
                 Objects.equals(poste, employes.poste) &&
-                Objects.equals(accord_sortie, employes.accord_sortie) &&
+                Objects.equals(accordSortie, employes.accordSortie) &&
                 Objects.equals(service, employes.service);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nom, email, poste, accord_sortie);
+        return Objects.hash(id, nom, email, poste, accordSortie);
+    }
+
+    @Override
+    public String toString() {
+        return "Employes{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", email='" + email + '\'' +
+                ", poste='" + poste + '\'' +
+                ", accordSortie='" + accordSortie + '\'' +
+                ", service=" + service +
+                '}';
     }
 }

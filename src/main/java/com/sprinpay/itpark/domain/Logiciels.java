@@ -9,18 +9,17 @@ import jakarta.persistence.*;
 @Table(name = "logiciels")
 public class Logiciels {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String libelle;
     private String editeur;
     private String version;
-    private Date date_achat;
-    private Date date_expiration;
+    private Date dateAchat;
+    private Date dateExpiration;
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "id_type_logiciel")
-    private Type_logiciels type_logiciel;
+    private TypeLogiciel typeLogiciel;
 
     // Getters
     public Long getId() {
@@ -39,20 +38,20 @@ public class Logiciels {
         return version;
     }
 
-    public Date getDate_achat() {
-        return date_achat;
+    public Date getDateAchat() {
+        return dateAchat;
     }
 
-    public Date getDate_expiration() {
-        return date_expiration;
+    public Date getDateExpiration() {
+        return dateExpiration;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public Type_logiciels getType_logiciel() {
-        return type_logiciel;
+    public TypeLogiciel getTypeLogiciel() {
+        return typeLogiciel;
     }
 
     // Setters
@@ -72,20 +71,20 @@ public class Logiciels {
         this.version = version;
     }
 
-    public void setDate_achat(Date date_achat) {
-        this.date_achat = date_achat;
+    public void setDateAchat(Date dateAchat) {
+        this.dateAchat = dateAchat;
     }
 
     public void setDateExpiration(Date date_expiration) {
-        this.date_expiration = date_expiration;
+        this.dateExpiration = date_expiration;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public void setType_logiciel(Type_logiciels type_logiciel) {
-        this.type_logiciel = type_logiciel;
+    public void setTypeLogiciel(TypeLogiciel typeLogiciel) {
+        this.typeLogiciel = typeLogiciel;
     }
 
     // Override des méthodes equals et hashCode
@@ -100,13 +99,13 @@ public class Logiciels {
                 Objects.equals(libelle, logiciels.libelle) &&
                 Objects.equals(editeur, logiciels.editeur) &&
                 Objects.equals(version, logiciels.version) &&
-                Objects.equals(date_achat, logiciels.date_achat) &&
-                Objects.equals(date_expiration, logiciels.date_expiration) &&
+                Objects.equals(dateAchat, logiciels.dateAchat) &&
+                Objects.equals(dateExpiration, logiciels.dateExpiration) &&
                 Objects.equals(description, logiciels.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, libelle, editeur, version, date_achat, date_expiration, description);
+        return Objects.hash(id, libelle, editeur, version, dateAchat, dateExpiration, description);
     }
 }

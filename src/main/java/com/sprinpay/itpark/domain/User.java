@@ -1,6 +1,7 @@
 package com.sprinpay.itpark.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 import java.util.Objects;
 
@@ -8,10 +9,14 @@ import java.util.Objects;
 @Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank(message = "Champ requis")
     private String name;
+    @NotBlank(message = "Champ requis")
     private String login;
+    @NotBlank(message = "Champ requis")
     private String password;
     private boolean status;
 

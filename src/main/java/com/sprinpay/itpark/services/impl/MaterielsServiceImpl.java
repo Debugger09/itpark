@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.sprinpay.itpark.domain.Materiels;
+import com.sprinpay.itpark.domain.Materiel;
 import com.sprinpay.itpark.repository.MaterielsRepository;
 import com.sprinpay.itpark.services.MaterielsService;
 
@@ -24,17 +24,17 @@ public class MaterielsServiceImpl implements MaterielsService {
     }
 
     @Override
-    public List<Materiels> findAll() {
+    public List<Materiel> findAll() {
         return materielsRepository.findAll();
     }
 
     @Override
-    public Optional<Materiels> findById(Long id) {
+    public Optional<Materiel> findById(Long id) {
         return materielsRepository.findById(id);
     }
 
     @Override
-    public Materiels save(Materiels materiels) {
+    public Materiel save(Materiel materiels) {
         return materielsRepository.save(materiels);
     }
 

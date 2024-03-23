@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.sprinpay.itpark.domain.Employes;
 import com.sprinpay.itpark.repository.EmployesRepository;
 import com.sprinpay.itpark.services.EmployesService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class EmployesServiceImpl implements EmployesService {
     private final EmployesRepository employesRepository;
 

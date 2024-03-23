@@ -15,8 +15,8 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String login(@ModelAttribute("loginDTO")LoginDTO loginDTO){
+    public String login(@ModelAttribute("loginDTO") LoginDTO loginDTO){
         System.out.println(loginDTO.toString());
-        return "redirect:/users";
+        return "redirect:/dashboard";
     }
 }
