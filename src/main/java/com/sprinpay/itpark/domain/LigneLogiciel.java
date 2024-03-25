@@ -13,7 +13,7 @@ public class LigneLogiciel {
 
     @ManyToOne
     @JoinColumn(name = "id_materiels")
-    private Materiel materiel;
+    private Materiels materiel;
 
     @ManyToOne
     @JoinColumn(name = "id_logiciels")
@@ -31,11 +31,11 @@ public class LigneLogiciel {
         this.id = id;
     }
 
-    public Materiel getMateriel() {
+    public Materiels getMateriel() {
         return materiel;
     }
 
-    public void setMateriel(Materiel materiel) {
+    public void setMateriel(Materiels materiel) {
         this.materiel = materiel;
     }
 
@@ -58,8 +58,10 @@ public class LigneLogiciel {
     // Override des méthodes equals et hashCode
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         LigneLogiciel that = (LigneLogiciel) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(materiel, that.materiel) &&

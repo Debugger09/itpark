@@ -1,7 +1,6 @@
 package com.sprinpay.itpark.controllers;
 
 import com.sprinpay.itpark.domain.Employes;
-import com.sprinpay.itpark.domain.User;
 import com.sprinpay.itpark.services.EmployesService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
@@ -35,19 +34,16 @@ public class EmployeController {
         return "employes/add-employe";
     }
 
-
     @PostMapping("/employes")
     public String saveEmployes(@Valid Employes employes, BindingResult result, Model model) {
-        if (result.hasErrors())
-            {
-                return "employes/add-employe";
-            }
-            System.out.println(employes.toString());
-            employesService.save(employes);
+        if (result.hasErrors()) {
+            return "employes/add-employe";
+        }
+        System.out.println(employes.toString());
+        employesService.save(employes);
 
         return "redirect:/employes";
     }
-
 
     @GetMapping("/employe-edit/{id}")
     public String showUpdateForm(@PathVariable("id") Long id, Model model) {
@@ -59,7 +55,6 @@ public class EmployeController {
         return "employes/update-employe";
     }
 
-
     @PostMapping("/employe-update/{id}")
     public String updateEmploye(@PathVariable("id") Long id, @Valid Employes employes) {
 
@@ -70,10 +65,9 @@ public class EmployeController {
     }
 
     @GetMapping("/employe-delete/{id}")
-    public String deleteEmploye(@PathVariable Long id){
+    public String deleteEmploye(@PathVariable Long id) {
         employesService.deleteById(id);
         return "redirect:/employes";
     }
-
 
 }

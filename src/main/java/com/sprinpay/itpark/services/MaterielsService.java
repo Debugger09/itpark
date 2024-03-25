@@ -1,17 +1,17 @@
 package com.sprinpay.itpark.services;
 
-import com.sprinpay.itpark.domain.Materiel;
+import com.sprinpay.itpark.domain.Materiels;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface MaterielsService {
 
-    List<Materiel> findAll();
+    List<Materiels> findAll();
 
-    Optional<Materiel> findById(Long id);
+    Optional<Materiels> findById(Long id);
 
-    Materiel save(Materiel materiel);
+    Materiels save(Materiels materiel);
 
     void deleteById(Long id);
 

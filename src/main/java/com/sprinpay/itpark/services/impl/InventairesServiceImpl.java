@@ -3,8 +3,6 @@ package com.sprinpay.itpark.services.impl;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.sprinpay.itpark.domain.Inventaires;
 import com.sprinpay.itpark.repository.InventairesRepository;
 import com.sprinpay.itpark.services.InventairesService;
@@ -12,7 +10,6 @@ import com.sprinpay.itpark.services.InventairesService;
 public class InventairesServiceImpl implements InventairesService {
     private final InventairesRepository inventairesRepository;
 
-    @Autowired
     public InventairesServiceImpl(InventairesRepository inventairesRepository) {
         this.inventairesRepository = inventairesRepository;
     }

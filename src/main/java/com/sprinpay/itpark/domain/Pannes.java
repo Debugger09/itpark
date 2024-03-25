@@ -16,7 +16,7 @@ public class Pannes {
 
     @ManyToOne
     @JoinColumn(name = "id_materiel")
-    private Materiel materiel;
+    private Materiels materiel;
 
     // Getters
     public Long getId() {
@@ -31,7 +31,7 @@ public class Pannes {
         return date_diagnostic;
     }
 
-    public Materiel getMateriel() {
+    public Materiels getMateriel() {
         return materiel;
     }
 
@@ -48,7 +48,7 @@ public class Pannes {
         this.date_diagnostic = date_diagnostic;
     }
 
-    public void setMateriel(Materiel materiel) {
+    public void setMateriel(Materiels materiel) {
         this.materiel = materiel;
     }
 

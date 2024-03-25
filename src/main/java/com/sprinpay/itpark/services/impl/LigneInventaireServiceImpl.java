@@ -3,8 +3,6 @@ package com.sprinpay.itpark.services.impl;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.sprinpay.itpark.domain.LigneInventaire;
 import com.sprinpay.itpark.repository.LigneInventaireRepository;
 import com.sprinpay.itpark.services.LigneInventaireService;
@@ -12,7 +10,6 @@ import com.sprinpay.itpark.services.LigneInventaireService;
 public class LigneInventaireServiceImpl implements LigneInventaireService {
     private final LigneInventaireRepository ligneInventaireRepository;
 
-    @Autowired
     public LigneInventaireServiceImpl(LigneInventaireRepository ligneInventaireRepository) {
         this.ligneInventaireRepository = ligneInventaireRepository;
     }

@@ -42,8 +42,6 @@ public class Employes {
         return poste;
     }
 
-
-
     // Setters
     public void setId(Long id) {
         this.id = id;
@@ -96,7 +94,7 @@ public class Employes {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nom, email, poste, accordSortie);
+        return Objects.hash(id, nom, email, poste, accordSortie, service);
     }
 
     @Override

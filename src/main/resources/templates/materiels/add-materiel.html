@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un matériel</title>
+</head>
+<body>
+
+<div class="row justify-content-center" layout:fragment="content">
+    <div class="col-10">
+        <div class="card">
+            <div class="card-header">
+                Ajouter un matériel
+            </div>
+            <div class="card-body">
+
+                <form th:object="${materiel}" method="post" th:action="@{/materiels}" class="row">
+
+                    <div class="col-12">
+                        <label for="libelle" class="form-label">Libellé</label>
+                        <input type="text" id="libelle" class="form-control" th:field="*{libelle}" placeholder="Libellé">
+                        <span th:if="${#fields.hasErrors('libelle')}" th:errors="*{libelle}" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="fabricant" class="form-label">Fabricant</label>
+                        <input type="text" id="fabricant" class="form-control" th:field="*{fabricant}" placeholder="Fabricant">
+                        <span th:if="${#fields.hasErrors('fabricant')}" th:errors="*{fabricant}" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="modele" class="form-label">Modèle</label>
+                        <input type="text" id="modele" class="form-control" th:field="*{modele}" placeholder="Modèle">
+                        <span th:if="${#fields.hasErrors('modele')}" th:errors="*{modele}" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="numeroSerie" class="form-label">Numéro de série</label>
+                        <input type="text" id="numeroSerie" class="form-control" th:field="*{numeroSerie}" placeholder="Numéro de série">
+                        <span th:if="${#fields.hasErrors('numeroSerie')}" th:errors="*{numeroSerie}" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="etatAchat" class="form-label">État d'achat</label>
+                        <input type="checkbox" id="etatAchat" class="form-check-input" th:field="*{etatAchat}">
+                    </div>
+
+                    <div class="col-12">
+                        <label for="mobilite" class="form-label">Mobilité</label>
+                        <input type="checkbox" id="mobilite" class="form-check-input" th:field="*{mobilite}">
+                    </div>
+
+                    <!-- Champs pour les clés étrangères -->
+                    <!-- Ajoutez ici les champs pour les clés étrangères -->
+
+                    <div class="col-12">
+                        <button class="btn btn-primary float-end">Ajouter</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

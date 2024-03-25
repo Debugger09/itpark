@@ -3,8 +3,6 @@ package com.sprinpay.itpark.services.impl;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.sprinpay.itpark.domain.Interventions;
 import com.sprinpay.itpark.repository.InterventionsRepository;
 import com.sprinpay.itpark.services.InterventionsService;
@@ -12,7 +10,6 @@ import com.sprinpay.itpark.services.InterventionsService;
 public class InterventionsServiceImpl implements InterventionsService {
     private final InterventionsRepository interventionsRepository;
 
-    @Autowired
     public InterventionsServiceImpl(InterventionsRepository interventionsRepository) {
         this.interventionsRepository = interventionsRepository;
     }

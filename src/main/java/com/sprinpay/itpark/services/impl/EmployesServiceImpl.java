@@ -3,8 +3,6 @@ package com.sprinpay.itpark.services.impl;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.sprinpay.itpark.domain.Employes;
 import com.sprinpay.itpark.repository.EmployesRepository;
 import com.sprinpay.itpark.services.EmployesService;
@@ -14,7 +12,6 @@ import org.springframework.stereotype.Service;
 public class EmployesServiceImpl implements EmployesService {
     private final EmployesRepository employesRepository;
 
-    @Autowired
     public EmployesServiceImpl(EmployesRepository employesRepository) {
         this.employesRepository = employesRepository;
     }

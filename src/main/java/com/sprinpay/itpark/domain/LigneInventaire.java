@@ -15,7 +15,7 @@ public class LigneInventaire {
 
     @ManyToOne
     @JoinColumn(name = "id_materiels")
-    private Materiel materiel;
+    private Materiels materiel;
 
     @Column(name = "observation", length = 100)
     private String observation;
@@ -40,11 +40,11 @@ public class LigneInventaire {
         this.inventaire = inventaire;
     }
 
-    public Materiel getMateriel() {
+    public Materiels getMateriel() {
         return materiel;
     }
 
-    public void setMateriel(Materiel materiel) {
+    public void setMateriel(Materiels materiel) {
         this.materiel = materiel;
     }
 

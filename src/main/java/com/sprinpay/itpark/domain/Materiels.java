@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "materiels")
-public class Materiel {
+public class Materiels {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,11 +18,6 @@ public class Materiel {
     private Boolean mobilite;
 
     // Champs pour les clés étrangères
-    @ManyToOne
-    private Employes employe;
-
-    @ManyToOne
-    private Administrateurs administrateur;
 
     @ManyToOne
     private TypeMateriel typeMateriel;
@@ -85,24 +80,6 @@ public class Materiel {
         this.mobilite = mobilite;
     }
 
-    // Getter et Setter pour la relation avec la table Employes
-    public Employes getEmploye() {
-        return employe;
-    }
-
-    public void setEmploye(Employes employe) {
-        this.employe = employe;
-    }
-
-    // Getter et Setter pour la relation avec la table Administrateurs
-    public Administrateurs getAdministrateur() {
-        return administrateur;
-    }
-
-    public void setAdministrateur(Administrateurs administrateur) {
-        this.administrateur = administrateur;
-    }
-
     // Getter et Setter pour la relation avec la table TypeMateriel
     public TypeMateriel getTypeMateriel() {
         return typeMateriel;
@@ -119,7 +96,7 @@ public class Materiel {
             return true;
         if (o == null || getClass() != o.getClass())
             return false;
-        Materiel materiel = (Materiel) o;
+        Materiels materiel = (Materiels) o;
         return Objects.equals(id, materiel.id) &&
                 Objects.equals(libelle, materiel.libelle) &&
                 Objects.equals(fabricant, materiel.fabricant) &&
@@ -127,13 +104,11 @@ public class Materiel {
                 Objects.equals(numeroSerie, materiel.numeroSerie) &&
                 Objects.equals(etatAchat, materiel.etatAchat) &&
                 Objects.equals(mobilite, materiel.mobilite) &&
-                Objects.equals(employe, materiel.employe) &&
-                Objects.equals(administrateur, materiel.administrateur) &&
                 Objects.equals(typeMateriel, materiel.typeMateriel);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, libelle, fabricant, modele, numeroSerie, etatAchat, mobilite);
+        return Objects.hash(id, libelle, fabricant, modele, numeroSerie, etatAchat, mobilite, typeMateriel);
     }
 }

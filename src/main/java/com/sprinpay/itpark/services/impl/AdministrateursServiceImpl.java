@@ -3,7 +3,6 @@ package com.sprinpay.itpark.services.impl;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sprinpay.itpark.domain.Administrateurs;
@@ -14,7 +13,6 @@ import com.sprinpay.itpark.services.AdministrateursService;
 public class AdministrateursServiceImpl implements AdministrateursService {
     private final AdministrateursRepository administrateursRepository;
 
-    @Autowired
     public AdministrateursServiceImpl(AdministrateursRepository administrateursRepository) {
         this.administrateursRepository = administrateursRepository;
     }

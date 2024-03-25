@@ -3,8 +3,6 @@ package com.sprinpay.itpark.services.impl;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.sprinpay.itpark.domain.LigneLogiciel;
 import com.sprinpay.itpark.repository.LigneLogicielRepository;
 import com.sprinpay.itpark.services.LigneLogicielService;
@@ -12,7 +10,6 @@ import com.sprinpay.itpark.services.LigneLogicielService;
 public class LigneLogicielServiceImpl implements LigneLogicielService {
     private final LigneLogicielRepository logicielRepository;
 
-    @Autowired
     public LigneLogicielServiceImpl(LigneLogicielRepository logicielRepository) {
         this.logicielRepository = logicielRepository;
     }

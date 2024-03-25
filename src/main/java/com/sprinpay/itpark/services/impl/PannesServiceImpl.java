@@ -3,8 +3,6 @@ package com.sprinpay.itpark.services.impl;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.sprinpay.itpark.domain.Pannes;
 import com.sprinpay.itpark.repository.PannesRepository;
 import com.sprinpay.itpark.services.PannesService;
@@ -12,7 +10,6 @@ import com.sprinpay.itpark.services.PannesService;
 public class PannesServiceImpl implements PannesService {
     private final PannesRepository pannesRepository;
 
-    @Autowired
     public PannesServiceImpl(PannesRepository pannesRepository) {
         this.pannesRepository = pannesRepository;
     }

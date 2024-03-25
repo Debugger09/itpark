@@ -3,8 +3,6 @@ package com.sprinpay.itpark.services.impl;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.sprinpay.itpark.domain.Materiel;
 import com.sprinpay.itpark.repository.MaterielsRepository;
 import com.sprinpay.itpark.services.MaterielsService;
@@ -12,7 +10,6 @@ import com.sprinpay.itpark.services.MaterielsService;
 public class MaterielsServiceImpl implements MaterielsService {
     private final MaterielsRepository materielsRepository;
 
-    @Autowired
     public MaterielsServiceImpl(MaterielsRepository materielsRepository) {
         this.materielsRepository = materielsRepository;
     }

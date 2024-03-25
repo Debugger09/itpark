@@ -5,14 +5,12 @@ import java.util.Optional;
 
 import com.sprinpay.itpark.domain.TypeMateriel;
 import com.sprinpay.itpark.repository.TypeMaterielRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.sprinpay.itpark.services.TypeMaterielService;
 
 public class TypeMaterielServiceImpl implements TypeMaterielService {
     private final TypeMaterielRepository typeMaterielRepository;
 
-    @Autowired
     public TypeMaterielServiceImpl(TypeMaterielRepository typeMaterielRepository) {
         this.typeMaterielRepository = typeMaterielRepository;
     }
