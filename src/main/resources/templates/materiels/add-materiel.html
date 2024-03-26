@@ -13,7 +13,7 @@
     <div class="col-10">
         <div class="card">
             <div class="card-header">
-                Ajouter un matériel
+               Ajouter un matériel
             </div>
             <div class="card-body">
 
@@ -54,7 +54,12 @@
                     </div>
 
                     <!-- Champs pour les clés étrangères -->
-                    <!-- Ajoutez ici les champs pour les clés étrangères -->
+                    <div class="col-12">
+                        <label for="typeMateriel" class="form-label">Type de matériel</label>
+                        <select id="typeMateriel" class="form-control" th:field="*{typeMateriel}">
+                            <option th:each="type : ${typesMateriel}" th:value="${type}" th:text="${type.nom}"></option>
+                        </select>
+                    </div>
 
                     <div class="col-12">
                         <button class="btn btn-primary float-end">Ajouter</button>
@@ -63,6 +68,7 @@
             </div>
         </div>
     </div>
+
 </div>
 
 </body>

@@ -3,10 +3,13 @@ package com.sprinpay.itpark.services.impl;
 import java.util.List;
 import java.util.Optional;
 
-import com.sprinpay.itpark.domain.Materiel;
+import org.springframework.stereotype.Service;
+
+import com.sprinpay.itpark.domain.Materiels;
 import com.sprinpay.itpark.repository.MaterielsRepository;
 import com.sprinpay.itpark.services.MaterielsService;
 
+@Service
 public class MaterielsServiceImpl implements MaterielsService {
     private final MaterielsRepository materielsRepository;
 
@@ -21,17 +24,17 @@ public class MaterielsServiceImpl implements MaterielsService {
     }
 
     @Override
-    public List<Materiel> findAll() {
+    public List<Materiels> findAll() {
         return materielsRepository.findAll();
     }
 
     @Override
-    public Optional<Materiel> findById(Long id) {
+    public Optional<Materiels> findById(Long id) {
         return materielsRepository.findById(id);
     }
 
     @Override
-    public Materiel save(Materiel materiels) {
+    public Materiels save(Materiels materiels) {
         return materielsRepository.save(materiels);
     }
 
