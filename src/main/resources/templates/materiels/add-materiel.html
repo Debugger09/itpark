@@ -17,7 +17,7 @@
             </div>
             <div class="card-body">
 
-                <form th:object="${materiel}" method="post" th:action="@{/materiels}" class="row">
+                <form th:object="${materiels}" method="post" th:action="@{/materiels}" class="row">
 
                     <div class="col-12">
                         <label for="libelle" class="form-label">Libellé</label>
@@ -57,7 +57,8 @@
                     <div class="col-12">
                         <label for="typeMateriel" class="form-label">Type de matériel</label>
                         <select id="typeMateriel" class="form-control" th:field="*{typeMateriel}">
-                            <option th:each="type : ${typesMateriel}" th:value="${type}" th:text="${type.nom}"></option>
+                            <option value=""></option>
+                            <option th:each="type : ${typesMateriels}" th:value="${type}" th:text="${type.libelle}"></option>
                         </select>
                     </div>
 

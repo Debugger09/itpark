@@ -7,7 +7,9 @@ import com.sprinpay.itpark.domain.TypeMateriel;
 import com.sprinpay.itpark.repository.TypeMaterielRepository;
 
 import com.sprinpay.itpark.services.TypeMaterielService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class TypeMaterielServiceImpl implements TypeMaterielService {
     private final TypeMaterielRepository typeMaterielRepository;
 

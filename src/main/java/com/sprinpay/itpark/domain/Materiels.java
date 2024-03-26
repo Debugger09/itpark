@@ -3,6 +3,8 @@ package com.sprinpay.itpark.domain;
 import java.util.Objects;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "materiels")
@@ -10,6 +12,8 @@ public class Materiels {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank(message = "Champ requis")
     private String libelle;
     private String fabricant;
     private String modele;
@@ -21,6 +25,7 @@ public class Materiels {
 
     @ManyToOne
     private TypeMateriel typeMateriel;
+
 
     // Getters
     public Long getId() {
@@ -85,30 +90,25 @@ public class Materiels {
         return typeMateriel;
     }
 
-    public void setType_materiels(TypeMateriel type_materiel) {
-        this.typeMateriel = type_materiel;
+    public void setTypeMateriel(TypeMateriel typeMateriel) {
+        this.typeMateriel = typeMateriel;
     }
 
     // override
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
-        Materiels materiel = (Materiels) o;
-        return Objects.equals(id, materiel.id) &&
-                Objects.equals(libelle, materiel.libelle) &&
-                Objects.equals(fabricant, materiel.fabricant) &&
-                Objects.equals(modele, materiel.modele) &&
-                Objects.equals(numeroSerie, materiel.numeroSerie) &&
-                Objects.equals(etatAchat, materiel.etatAchat) &&
-                Objects.equals(mobilite, materiel.mobilite) &&
-                Objects.equals(typeMateriel, materiel.typeMateriel);
-    }
+
+
 
     @Override
-    public int hashCode() {
-        return Objects.hash(id, libelle, fabricant, modele, numeroSerie, etatAchat, mobilite, typeMateriel);
+    public String toString() {
+        return "Materiels{" +
+                "id=" + id +
+                ", libelle='" + libelle + '\'' +
+                ", fabricant='" + fabricant + '\'' +
+                ", modele='" + modele + '\'' +
+                ", numeroSerie='" + numeroSerie + '\'' +
+                ", etatAchat=" + etatAchat +
+                ", mobilite=" + mobilite +
+                ", typeMateriel=" + typeMateriel +
+                '}';
     }
 }

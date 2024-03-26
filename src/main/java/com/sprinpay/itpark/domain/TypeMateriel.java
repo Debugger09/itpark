@@ -1,6 +1,8 @@
 package com.sprinpay.itpark.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+
 import java.util.Objects;
 
 @Entity
@@ -9,6 +11,7 @@ public class TypeMateriel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank(message = "Champ requis")
     private String libelle;
 
     // Getters et Setters
@@ -42,5 +45,13 @@ public class TypeMateriel {
     @Override
     public int hashCode() {
         return Objects.hash(id, libelle);
+    }
+
+    @Override
+    public String toString() {
+        return "TypeMateriel{" +
+                "id=" + id +
+                ", libelle='" + libelle + '\'' +
+                '}';
     }
 }
