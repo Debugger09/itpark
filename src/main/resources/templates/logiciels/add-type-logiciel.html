@@ -5,7 +5,7 @@
 >
 <head>
     <meta charset="UTF-8">
-    <title> Ajouter un type de matériel</title>
+    <title> Ajouter un type de logiciel</title>
 </head>
 <body>
 
@@ -13,11 +13,11 @@
     <div class="col-10">
         <div class="card">
             <div class="card-header">
-               Ajouter un type de matériel
+               Ajouter un type de logiciel
             </div>
             <div class="card-body">
 
-                <form th:object="${typeMateriel}" method="post" th:action="@{/type-materiels}" class="row">
+                <form th:object="${typeLogiciel}" method="post" th:action="@{/type-logiciels}" class="row">
 
                     <div class="col-12">
                         <label for="libelle" class="form-label">Libellé</label>

@@ -13,7 +13,7 @@ public class Materiels {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Champ requis")
+
     private String libelle;
     private String fabricant;
     private String modele;

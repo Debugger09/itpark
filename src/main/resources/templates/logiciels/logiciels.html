@@ -5,7 +5,7 @@
 >
 <head>
     <meta charset="UTF-8">
-    <title>Liste des matériels</title>
+    <title>Liste des logiciels</title>
 </head>
 <body>
 
@@ -16,7 +16,7 @@
                 <div class="card-title">
                     <div class="row">
                         <div class="col-6">
-                            <h5>Liste des types matériels</h5>
+                            <h5>Liste des logiciels</h5>
                         </div>
                         <div class="col-6">
                             <div class="filter float-end">
@@ -25,7 +25,7 @@
                                     <li class="dropdown-header text-start">
                                         <h6>Option</h6>
                                     </li>
-                                    <li><a class="dropdown-item" th:href="@{/type-materiel-form}">Ajouter</a></li>
+                                    <li><a class="dropdown-item" th:href="@{/logiciel-form}">Ajouter</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -36,16 +36,34 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Libellé</th>
+                        <th scope="col">Editeur</th>
+                        <th scope="col">Version</th>
+                        <th scope="col">Date d'achat</th>
+                        <th scope="col">date d'expiration</th>
+                        <th scope="col">Type de logiciel</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Etat</th>
+
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="m: ${typemateriels}">
+                    <tr th:each="m: ${logiciels}">
                         <td th:text="${m.id}"></td>
                         <td th:text="${m.libelle}"></td>
+                        <td th:text="${m.editeur}"></td>
+                        <td th:text="${m.version}"></td>
+                        <td th:text="${#dates.format(m.dateAchat, 'dd-MM-yyyy')}"></td>
+                        <td  th:text="${#dates.format(m.dateExpiration, 'dd-MM-yyyy')}"></td>
+                        <td th:text="${m.typeLogiciel==null?'--':m.typeLogiciel.libelle}"></td>
+                        <td th:text="${m.description}"></td>
                         <td>
-                            <a th:href="@{/type-materiel-edit/{id}(id=${m.id})}"><i class="fa-solid fa-pen-to-square"></i></a>
-                            <a th:href="@{/type-materiel-delete/{id}(id=${m.id})}"><i class="fa-solid fa-trash text-danger"></i></a>
+                            <span th:if="${m.dateExpiration.before(m.dateAchat)}" class="badge bg-danger"> Expirer</span>
+                            <span th:if="${m.dateAchat.after(m.dateExpiration)}" class="badge bg-success">En cours</span>
+                        </td>
+                        <td>
+                            <a th:href="@{/logiciel-edit/{id}(id=${m.id})}"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a th:href="@{/logiciel-delete/{id}(id=${m.id})}"><i class="fa-solid fa-trash text-danger"></i></a>
                         </td>
                     </tr>
                     </tbody>

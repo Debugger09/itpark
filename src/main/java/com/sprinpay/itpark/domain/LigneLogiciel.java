@@ -56,21 +56,14 @@ public class LigneLogiciel {
     }
 
     // Override des méthodes equals et hashCode
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
-        LigneLogiciel that = (LigneLogiciel) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(materiel, that.materiel) &&
-                Objects.equals(logiciel, that.logiciel) &&
-                Objects.equals(date_installation, that.date_installation);
-    }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(id, materiel, logiciel, date_installation);
+    public String toString() {
+        return "LigneLogiciel{" +
+                "id=" + id +
+                ", materiel=" + materiel +
+                ", logiciel=" + logiciel +
+                ", date_installation=" + date_installation +
+                '}';
     }
 }

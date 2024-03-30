@@ -4,12 +4,14 @@ import com.sprinpay.itpark.domain.Materiels;
 import com.sprinpay.itpark.domain.TypeMateriel;
 import com.sprinpay.itpark.services.MaterielsService;
 import com.sprinpay.itpark.services.TypeMaterielService;
+import com.sprinpay.itpark.services.dto.MaterielDTO;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -33,18 +35,33 @@ public class MaterielController {
     }
 
     @GetMapping("/materiel-form")
-    public String showFormMateriel(@ModelAttribute("materiels") Materiels materiels,Model model) {
+    public String showFormMateriel(@ModelAttribute("materielDTO") MaterielDTO materielDTO,Model model) {
         model.addAttribute("typesMateriels",typeMaterielService.findAll());
         return "materiels/add-materiel";
     }
 
     @PostMapping("/materiels")
-    public String saveMateriel(@Valid Materiels materiels, BindingResult result) {
-        System.out.println(materiels.toString());
+    public String saveMateriel(@Valid MaterielDTO materielDTO, BindingResult result) {
         if (result.hasErrors()) {
             return "materiels/add-materiel";
         }
-        materielsService.save(materiels);
+        materielsService.save(materielDTO);
         return "redirect:/materiels";
+    }
+
+    @GetMapping("/materiel-delete/{id}")
+    public String deleteMateriel(@PathVariable Long id) {
+        materielsService.deleteById(id);
+        return "redirect:/materiels";
+    }
+
+    @GetMapping("/materiel-edit/{id}")
+    public String showUpdateForm(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("typesMateriels",typeMaterielService.findAll());
+        Materiels materiels = materielsService.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid materiel Id:" + id));
+
+        model.addAttribute("materielDTO", MaterielDTO.mapDTO(materiels));
+        return "materiels/add-materiel";
     }
 }

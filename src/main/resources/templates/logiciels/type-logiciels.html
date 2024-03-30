@@ -5,7 +5,7 @@
 >
 <head>
     <meta charset="UTF-8">
-    <title>Liste des matériels</title>
+    <title>Liste des types de logiciels</title>
 </head>
 <body>
 
@@ -16,7 +16,7 @@
                 <div class="card-title">
                     <div class="row">
                         <div class="col-6">
-                            <h5>Liste des types matériels</h5>
+                            <h5>Liste des types de logiciels</h5>
                         </div>
                         <div class="col-6">
                             <div class="filter float-end">
@@ -25,7 +25,7 @@
                                     <li class="dropdown-header text-start">
                                         <h6>Option</h6>
                                     </li>
-                                    <li><a class="dropdown-item" th:href="@{/type-materiel-form}">Ajouter</a></li>
+                                    <li><a class="dropdown-item" th:href="@{/type-logiciel-form}">Ajouter</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -40,12 +40,12 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="m: ${typemateriels}">
+                    <tr th:each="m: ${typeLogiciels}">
                         <td th:text="${m.id}"></td>
                         <td th:text="${m.libelle}"></td>
                         <td>
-                            <a th:href="@{/type-materiel-edit/{id}(id=${m.id})}"><i class="fa-solid fa-pen-to-square"></i></a>
-                            <a th:href="@{/type-materiel-delete/{id}(id=${m.id})}"><i class="fa-solid fa-trash text-danger"></i></a>
+                            <a th:href="@{/type-logiciel-edit/{id}(id=${m.id})}"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a th:href="@{/type-logiciel-delete/{id}(id=${m.id})}"><i class="fa-solid fa-trash text-danger"></i></a>
                         </td>
                     </tr>
                     </tbody>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+>
+<head>
+    <meta charset="UTF-8">
+    <title th:if="${logicielDTO.id !=null}">Modifier un logiciel</title>
+    <title th:if="${logicielDTO.id ==null}">Ajouter un logiciel</title>
+</head>
+<body>
+
+<div class="row justify-content-center" layout:fragment="content">
+    <div class="col-10">
+        <form th:object="${logicielDTO}" method="post" th:action="@{/logiciels}" class="row">
+        <div class="card">
+            <div class="card-header" th:if="${logicielDTO.id !=null}">
+               Modifier un logiciel
+            </div>
+
+            <div class="card-header" th:if="${logicielDTO.id ==null}">
+                Ajouter un logiciel
+            </div>
+            <div class="card-body">
+
+
+
+                    <div class="col-12">
+                        <label for="libelle" class="form-label">Libellé</label>
+
+
+                        <input type="hidden" th:field="*{id}">
+                        <input type="text" id="libelle" class="form-control" th:field="*{libelle}" placeholder="Libellé">
+                        <span th:if="${#fields.hasErrors('libelle')}" th:errors="*{libelle}" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="editeur" class="form-label">Editeur</label>
+                        <input type="text" id="editeur" class="form-control" th:field="*{editeur}" placeholder="éditeur">
+                        <span th:if="${#fields.hasErrors('editeur')}" th:errors="*{editeur}" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="version" class="form-label">Version</label>
+                        <input type="text" id="version" class="form-control" th:field="*{version}" placeholder="version">
+                        <span th:if="${#fields.hasErrors('version')}" th:errors="*{version}" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="dateAchat" class="form-label">Date d'achat</label>
+                        <input type="date"  id="dateAchat" class="form-control" th:field="*{dateAchat}" placeholder="Numéro de série">
+                        <span th:if="${#fields.hasErrors('dateAchat')}" th:errors="*{dateAchat}" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="dateExpiration" class="form-label">Date d'expiration</label>
+                        <input type="date" id="dateExpiration" class="form-control" th:field="*{dateExpiration}">
+                    </div>
+
+                <div class="col-12">
+                    <label for="typeLogicielId" class="form-label">Type de logiciel</label>
+                    <select id="typeLogicielId" class="form-select" th:field="*{typeLogicielId}">
+                        <option value=""></option>
+                        <option th:each="type : ${typeLogiciels}" th:value="${type.id}" th:text="${type.libelle}"></option>
+                    </select>
+                </div>
+
+                    <div class="col-12">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea id="description" class="form-control" rows="5" th:field="*{description}"> </textarea>
+                    </div>
+
+                    <!-- Champs pour les clés étrangères -->
+
+
+
+
+            </div>
+            <div class="card-footer">
+                <div class="col-12">
+                    <button class="btn btn-primary float-end" th:if="${logicielDTO.id ==null}">Ajouter</button>
+                    <button class="btn btn-primary float-end" th:if="${logicielDTO.id !=null}">Modifier</button>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>

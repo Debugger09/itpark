@@ -5,7 +5,7 @@
 >
 <head>
     <meta charset="UTF-8">
-    <title> Ajouter un type de matériel</title>
+    <title> Modifier un type de logiciel</title>
 </head>
 <body>
 
@@ -13,21 +13,22 @@
     <div class="col-10">
         <div class="card">
             <div class="card-header">
-               Ajouter un type de matériel
+                Modifier un type de logiciel
             </div>
             <div class="card-body">
 
-                <form th:object="${typeMateriel}" method="post" th:action="@{/type-materiels}" class="row">
+                <form th:object="${typeLogiciel}" method="post" th:action="@{/type-logiciels}" class="row">
 
                     <div class="col-12">
                         <label for="libelle" class="form-label">Libellé</label>
+                        <input type="hidden" id="id" class="form-control" th:field="*{id}">
                         <input type="text" id="libelle" class="form-control" th:field="*{libelle}" placeholder="Libellé">
                         <span th:if="${#fields.hasErrors('libelle')}" th:errors="*{libelle}" class="text-danger"></span>
                     </div>
 
 
                     <div class="col-12">
-                        <button class="btn btn-primary float-end">Ajouter</button>
+                        <button class="btn btn-primary float-end">Modifier</button>
                     </div>
                 </form>
             </div>

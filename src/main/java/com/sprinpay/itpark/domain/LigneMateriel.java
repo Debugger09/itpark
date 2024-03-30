@@ -10,13 +10,9 @@ public class LigneMateriel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @ManyToOne
-    @JoinColumn(name = "id_employe")
     private Employes employe;
-
     @ManyToOne
-    @JoinColumn(name = "id_materiel")
     private Materiels materiel;
 
     @Column(name = "date_attribution", nullable = false)
@@ -55,22 +51,14 @@ public class LigneMateriel {
         this.dateAttribution = dateAttribution;
     }
 
-    // Override des méthodes equals et hashCode
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
-        LigneMateriel that = (LigneMateriel) o;
-        return Objects.equals(id, that.id) &&
-                Objects.equals(employe, that.employe) &&
-                Objects.equals(materiel, that.materiel) &&
-                Objects.equals(dateAttribution, that.dateAttribution);
-    }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(id, employe, materiel, dateAttribution);
+    public String toString() {
+        return "LigneMateriel{" +
+                "id=" + id +
+                ", employe=" + employe +
+                ", materiel=" + materiel +
+                ", dateAttribution=" + dateAttribution +
+                '}';
     }
 }

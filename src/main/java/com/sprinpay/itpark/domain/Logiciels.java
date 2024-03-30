@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.Objects;
 
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "logiciels")
@@ -14,7 +15,9 @@ public class Logiciels {
     private String libelle;
     private String editeur;
     private String version;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateAchat;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateExpiration;
     private String description;
 
@@ -75,8 +78,8 @@ public class Logiciels {
         this.dateAchat = dateAchat;
     }
 
-    public void setDateExpiration(Date date_expiration) {
-        this.dateExpiration = date_expiration;
+    public void setDateExpiration(Date dateExpiration) {
+        this.dateExpiration = dateExpiration;
     }
 
     public void setDescription(String description) {
@@ -88,24 +91,18 @@ public class Logiciels {
     }
 
     // Override des méthodes equals et hashCode
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
-        Logiciels logiciels = (Logiciels) o;
-        return Objects.equals(id, logiciels.id) &&
-                Objects.equals(libelle, logiciels.libelle) &&
-                Objects.equals(editeur, logiciels.editeur) &&
-                Objects.equals(version, logiciels.version) &&
-                Objects.equals(dateAchat, logiciels.dateAchat) &&
-                Objects.equals(dateExpiration, logiciels.dateExpiration) &&
-                Objects.equals(description, logiciels.description);
-    }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(id, libelle, editeur, version, dateAchat, dateExpiration, description);
+    public String toString() {
+        return "Logiciels{" +
+                "id=" + id +
+                ", libelle='" + libelle + '\'' +
+                ", editeur='" + editeur + '\'' +
+                ", version='" + version + '\'' +
+                ", dateAchat=" + dateAchat +
+                ", dateExpiration=" + dateExpiration +
+                ", description='" + description + '\'' +
+                ", typeLogiciel=" + typeLogiciel +
+                '}';
     }
 }

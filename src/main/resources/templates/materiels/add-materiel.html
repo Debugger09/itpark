@@ -5,22 +5,31 @@
 >
 <head>
     <meta charset="UTF-8">
-    <title>Ajouter un matériel</title>
+    <title th:if="${materielDTO.id !=null}">Modifier un matériel</title>
+    <title th:if="${materielDTO.id ==null}">Ajouter un matériel</title>
 </head>
 <body>
 
 <div class="row justify-content-center" layout:fragment="content">
     <div class="col-10">
+        <form th:object="${materielDTO}" method="post" th:action="@{/materiels}" class="row">
         <div class="card">
-            <div class="card-header">
-               Ajouter un matériel
+            <div class="card-header" th:if="${materielDTO.id !=null}">
+               Modifier un matériel
+            </div>
+
+            <div class="card-header" th:if="${materielDTO.id ==null}">
+                Ajouter un matériel
             </div>
             <div class="card-body">
 
-                <form th:object="${materiels}" method="post" th:action="@{/materiels}" class="row">
+
 
                     <div class="col-12">
                         <label for="libelle" class="form-label">Libellé</label>
+
+
+                        <input type="hidden" th:field="*{id}">
                         <input type="text" id="libelle" class="form-control" th:field="*{libelle}" placeholder="Libellé">
                         <span th:if="${#fields.hasErrors('libelle')}" th:errors="*{libelle}" class="text-danger"></span>
                     </div>
@@ -56,18 +65,23 @@
                     <!-- Champs pour les clés étrangères -->
                     <div class="col-12">
                         <label for="typeMateriel" class="form-label">Type de matériel</label>
-                        <select id="typeMateriel" class="form-control" th:field="*{typeMateriel}">
+                        <select id="typeMateriel" class="form-select" th:field="*{typeMaterielId}">
                             <option value=""></option>
-                            <option th:each="type : ${typesMateriels}" th:value="${type}" th:text="${type.libelle}"></option>
+                            <option th:each="type : ${typesMateriels}" th:value="${type.id}" th:text="${type.libelle}"></option>
                         </select>
                     </div>
 
-                    <div class="col-12">
-                        <button class="btn btn-primary float-end">Ajouter</button>
-                    </div>
-                </form>
+
+
+            </div>
+            <div class="card-footer">
+                <div class="col-12">
+                    <button class="btn btn-primary float-end" th:if="${materielDTO.id ==null}">Ajouter</button>
+                    <button class="btn btn-primary float-end" th:if="${materielDTO.id !=null}">Modifier</button>
+                </div>
             </div>
         </div>
+        </form>
     </div>
 
 </div>

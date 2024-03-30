@@ -7,7 +7,9 @@ import com.sprinpay.itpark.repository.TypeLogicielRepository;
 
 import com.sprinpay.itpark.domain.TypeLogiciel;
 import com.sprinpay.itpark.services.TypeLogicielService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class TypeLogicielServiceImpl implements TypeLogicielService {
 
     private final TypeLogicielRepository type_logicielsRepository;
