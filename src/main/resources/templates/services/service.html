@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des services</title>
+</head>
+<body>
+
+<div class="container">
+    <section class="section" layout:fragment="content">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    <div class="row">
+                        <div class="col-6">
+                            <h5>Liste des services</h5>
+                        </div>
+                        <div class="col-6">
+                            <div class="filter float-end">
+                                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots" style="font-size: 29px;"></i></a>
+                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                    <li class="dropdown-header text-start">
+                                        <h6>Option</h6>
+                                    </li>
+                                    <li><a class="dropdown-item" th:href="@{/services/new}">Ajouter</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Libellé</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="service: ${services}">
+                        <td th:text="${service.id}"></td>
+                        <td th:text="${service.libelle}"></td>
+                        <td>
+                            <a th:href="@{/services/edit/{id}(id=${service.id})}"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a th:href="@{/services/delete/{id}(id=${service.id})}"><i class="fa-solid fa-trash text-danger"></i></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>

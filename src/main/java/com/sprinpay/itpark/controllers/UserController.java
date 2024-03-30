@@ -1,4 +1,5 @@
 package com.sprinpay.itpark.controllers;
+
 import com.sprinpay.itpark.domain.User;
 import com.sprinpay.itpark.services.UserService;
 import jakarta.validation.Valid;
@@ -16,20 +17,21 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
+
     @GetMapping("/users")
-    public String showUsers(Model model){
-        List<User> users=userService.findAll();
-        model.addAttribute("users",users);
+    public String showUsers(Model model) {
+        List<User> users = userService.findAll();
+        model.addAttribute("users", users);
         return "users/users";
     }
 
     @GetMapping("/user-form")
-    public String showFormUser(@ModelAttribute("user") User user){
+    public String showFormUser(@ModelAttribute("user") User user) {
         return "users/add-user";
     }
 
     @PostMapping("/users")
-    public String saveUser(@Valid User user, BindingResult result, Model model){
+    public String saveUser(@Valid User user, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "users/add-user";
         }
@@ -40,16 +42,16 @@ public class UserController {
     }
 
     /*
-           Supprimer un utilisateur
+     * Supprimer un utilisateur
      */
     @GetMapping("/user-delete/{id}")
-    public String deleteSave(@PathVariable Long id){
-         userService.delete(id);
+    public String deleteSave(@PathVariable Long id) {
+        userService.delete(id);
         return "redirect:/users";
     }
 
     /*
-           Modifier un utilisateur
+     * Modifier un utilisateur
      */
 
     @GetMapping("/user-edit/{id}")
@@ -62,13 +64,11 @@ public class UserController {
         return "users/update-user";
     }
 
-
     @PostMapping("/user-update/{id}")
     public String updateUser(@PathVariable("id") Long id, @Valid User user) {
         user.setId(id);
         userService.save(user);
         return "redirect:/users";
     }
-
 
 }
