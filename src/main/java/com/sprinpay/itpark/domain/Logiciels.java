@@ -1,7 +1,6 @@
 package com.sprinpay.itpark.domain;
 
 import java.util.Date;
-import java.util.Objects;
 
 import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;

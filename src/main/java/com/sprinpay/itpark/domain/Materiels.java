@@ -1,10 +1,6 @@
 package com.sprinpay.itpark.domain;
 
-import java.util.Objects;
-
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "materiels")
@@ -12,7 +8,6 @@ public class Materiels {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
 
     private String libelle;
     private String fabricant;
@@ -25,7 +20,6 @@ public class Materiels {
 
     @ManyToOne
     private TypeMateriel typeMateriel;
-
 
     // Getters
     public Long getId() {
@@ -95,8 +89,6 @@ public class Materiels {
     }
 
     // override
-
-
 
     @Override
     public String toString() {

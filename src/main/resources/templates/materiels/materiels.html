@@ -53,8 +53,7 @@
                         <td th:text="${m.modele}"></td>
                         <td th:text="${m.numeroSerie}"></td>
                         <td>
-                            <span class="badge bg-success" th:if="${m.etatAchat}">Oui</span>
-                            <span class="badge bg-danger" th:if="${!m.etatAchat}">Non</span>
+                            <span th:text="${m.etatAchat ? 'Neuf' : 'Occasion'}"></span>
                         </td>
                         <td>
                             <span class="badge bg-success" th:if="${m.mobilite}">Oui</span>

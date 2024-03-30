@@ -1,7 +1,7 @@
 package com.sprinpay.itpark.controllers;
 
 import com.sprinpay.itpark.domain.Materiels;
-import com.sprinpay.itpark.domain.TypeMateriel;
+
 import com.sprinpay.itpark.services.MaterielsService;
 import com.sprinpay.itpark.services.TypeMaterielService;
 import com.sprinpay.itpark.services.dto.MaterielDTO;
@@ -19,7 +19,7 @@ import java.util.List;
 @Controller
 public class MaterielController {
     private final MaterielsService materielsService;
-    private  final TypeMaterielService typeMaterielService;
+    private final TypeMaterielService typeMaterielService;
 
     public MaterielController(MaterielsService materielsService, TypeMaterielService typeMaterielService) {
         this.materielsService = materielsService;
@@ -35,8 +35,8 @@ public class MaterielController {
     }
 
     @GetMapping("/materiel-form")
-    public String showFormMateriel(@ModelAttribute("materielDTO") MaterielDTO materielDTO,Model model) {
-        model.addAttribute("typesMateriels",typeMaterielService.findAll());
+    public String showFormMateriel(@ModelAttribute("materielDTO") MaterielDTO materielDTO, Model model) {
+        model.addAttribute("typesMateriels", typeMaterielService.findAll());
         return "materiels/add-materiel";
     }
 
@@ -57,7 +57,7 @@ public class MaterielController {
 
     @GetMapping("/materiel-edit/{id}")
     public String showUpdateForm(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("typesMateriels",typeMaterielService.findAll());
+        model.addAttribute("typesMateriels", typeMaterielService.findAll());
         Materiels materiels = materielsService.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid materiel Id:" + id));
 

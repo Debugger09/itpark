@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
-import java.util.Objects;
 
 @Entity
 @Table(name = "ligne_materiel")
@@ -53,7 +52,6 @@ public class LigneMateriel {
     public void setDateAttribution(Date dateAttribution) {
         this.dateAttribution = dateAttribution;
     }
-
 
     @Override
     public String toString() {

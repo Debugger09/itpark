@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import com.sprinpay.itpark.domain.Logiciels;
 import com.sprinpay.itpark.domain.TypeLogiciel;
-import com.sprinpay.itpark.domain.TypeMateriel;
+
 import com.sprinpay.itpark.repository.LogicielsRepository;
 import com.sprinpay.itpark.repository.TypeLogicielRepository;
 import com.sprinpay.itpark.services.LogicielsService;
@@ -17,7 +17,8 @@ public class LogicielsServiceImpl implements LogicielsService {
     private final LogicielsRepository logicielsRepository;
     private final TypeLogicielRepository typeLogicielRepository;
 
-    public LogicielsServiceImpl(LogicielsRepository logicielsRepository, TypeLogicielRepository typeLogicielRepository) {
+    public LogicielsServiceImpl(LogicielsRepository logicielsRepository,
+            TypeLogicielRepository typeLogicielRepository) {
         this.logicielsRepository = logicielsRepository;
         this.typeLogicielRepository = typeLogicielRepository;
     }
@@ -42,8 +43,8 @@ public class LogicielsServiceImpl implements LogicielsService {
     public Logiciels save(LogicielDTO logicielDTO) {
         TypeLogiciel typeLogiciel = typeLogicielRepository.findById(logicielDTO.getTypeLogicielId())
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + logicielDTO.getTypeLogicielId()));
-            Logiciels logiciels=LogicielDTO.mapEntity(logicielDTO);
-            logiciels.setTypeLogiciel(typeLogiciel);
+        Logiciels logiciels = LogicielDTO.mapEntity(logicielDTO);
+        logiciels.setTypeLogiciel(typeLogiciel);
         System.out.println(logiciels);
         return logicielsRepository.save(logiciels);
     }

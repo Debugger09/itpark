@@ -13,22 +13,17 @@
 <div class="row justify-content-center" layout:fragment="content">
     <div class="col-10">
         <form th:object="${materielDTO}" method="post" th:action="@{/materiels}" class="row">
-        <div class="card">
-            <div class="card-header" th:if="${materielDTO.id !=null}">
-               Modifier un matériel
-            </div>
+            <div class="card">
+                <div class="card-header" th:if="${materielDTO.id !=null}">
+                    Modifier un matériel
+                </div>
 
-            <div class="card-header" th:if="${materielDTO.id ==null}">
-                Ajouter un matériel
-            </div>
-            <div class="card-body">
-
-
-
+                <div class="card-header" th:if="${materielDTO.id ==null}">
+                    Ajouter un matériel
+                </div>
+                <div class="card-body">
                     <div class="col-12">
                         <label for="libelle" class="form-label">Libellé</label>
-
-
                         <input type="hidden" th:field="*{id}">
                         <input type="text" id="libelle" class="form-control" th:field="*{libelle}" placeholder="Libellé">
                         <span th:if="${#fields.hasErrors('libelle')}" th:errors="*{libelle}" class="text-danger"></span>
@@ -53,8 +48,15 @@
                     </div>
 
                     <div class="col-12">
-                        <label for="etatAchat" class="form-label">État d'achat</label>
-                        <input type="checkbox" id="etatAchat" class="form-check-input" th:field="*{etatAchat}">
+                        <label class="form-label">État d'achat</label>
+                        <div class="form-check">
+                            <input type="radio" id="etatAchatNeuf" class="form-check-input" th:field="*{etatAchat}" value="true">
+                            <label for="etatAchatNeuf" class="form-check-label">Neuf</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" id="etatAchatOccasion" class="form-check-input" th:field="*{etatAchat}" value="false">
+                            <label for="etatAchatOccasion" class="form-check-label">Occasion</label>
+                        </div>
                     </div>
 
                     <div class="col-12">
@@ -70,20 +72,16 @@
                             <option th:each="type : ${typesMateriels}" th:value="${type.id}" th:text="${type.libelle}"></option>
                         </select>
                     </div>
-
-
-
-            </div>
-            <div class="card-footer">
-                <div class="col-12">
-                    <button class="btn btn-primary float-end" th:if="${materielDTO.id ==null}">Ajouter</button>
-                    <button class="btn btn-primary float-end" th:if="${materielDTO.id !=null}">Modifier</button>
+                </div>
+                <div class="card-footer">
+                    <div class="col-12">
+                        <button class="btn btn-primary float-end" th:if="${materielDTO.id ==null}">Ajouter</button>
+                        <button class="btn btn-primary float-end" th:if="${materielDTO.id !=null}">Modifier</button>
+                    </div>
                 </div>
             </div>
-        </div>
         </form>
     </div>
-
 </div>
 
 </body>

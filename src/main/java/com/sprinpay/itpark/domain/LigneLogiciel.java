@@ -2,7 +2,6 @@ package com.sprinpay.itpark.domain;
 
 import jakarta.persistence.*;
 import java.util.Date;
-import java.util.Objects;
 
 @Entity
 @Table(name = "ligne_logiciel")

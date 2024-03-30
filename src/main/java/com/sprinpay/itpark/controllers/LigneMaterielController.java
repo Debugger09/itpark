@@ -1,6 +1,5 @@
 package com.sprinpay.itpark.controllers;
 
-import com.sprinpay.itpark.domain.LigneMateriel;
 import com.sprinpay.itpark.services.EmployesService;
 import com.sprinpay.itpark.services.LigneMaterielService;
 import com.sprinpay.itpark.services.MaterielsService;
@@ -16,22 +15,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class LigneMaterielController {
-    private  final LigneMaterielService ligneMaterielService;
+    private final LigneMaterielService ligneMaterielService;
     private final EmployesService employesService;
     private final MaterielsService materielsService;
 
-    public LigneMaterielController(LigneMaterielService ligneMaterielService, EmployesService employesService, MaterielsService materielsService) {
+    public LigneMaterielController(LigneMaterielService ligneMaterielService, EmployesService employesService,
+            MaterielsService materielsService) {
         this.ligneMaterielService = ligneMaterielService;
         this.employesService = employesService;
         this.materielsService = materielsService;
     }
 
     @GetMapping("/attribut-materiel-form/{id}")
-    public String showFormLigneMateriel(@PathVariable Long id, @ModelAttribute("ligneMaterielDTO") LigneMaterielDTO ligneMaterielDTO, Model model) {
-        model.addAttribute("employes",employesService.findAll());
-        model.addAttribute("materiel",materielsService.findById(id));
+    public String showFormLigneMateriel(@PathVariable Long id,
+            @ModelAttribute("ligneMaterielDTO") LigneMaterielDTO ligneMaterielDTO, Model model) {
+        model.addAttribute("employes", employesService.findAll());
+        model.addAttribute("materiel", materielsService.findById(id));
         ligneMaterielDTO.setMaterielId(id);
-
 
         return "materiels/attribuer";
     }

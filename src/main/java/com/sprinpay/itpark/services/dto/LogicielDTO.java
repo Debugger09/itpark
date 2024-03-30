@@ -1,17 +1,12 @@
 package com.sprinpay.itpark.services.dto;
 
 import com.sprinpay.itpark.domain.Logiciels;
-import com.sprinpay.itpark.domain.Materiels;
-import com.sprinpay.itpark.domain.TypeLogiciel;
-import jakarta.persistence.ManyToOne;
+
 import jakarta.validation.constraints.NotBlank;
-import lombok.Getter;
-import lombok.Setter;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
-import java.util.Formatter;
-
 
 public class LogicielDTO {
     private Long id;
@@ -104,22 +99,22 @@ public class LogicielDTO {
                 '}';
     }
 
-    public static LogicielDTO mapDTO(Logiciels logiciels){
-       LogicielDTO logicielDTO=  new LogicielDTO();
-      logicielDTO.setId(logiciels.getId());
+    public static LogicielDTO mapDTO(Logiciels logiciels) {
+        LogicielDTO logicielDTO = new LogicielDTO();
+        logicielDTO.setId(logiciels.getId());
         logicielDTO.setDateAchat(logiciels.getDateAchat());
         logicielDTO.setDateExpiration(logiciels.getDateExpiration());
         logicielDTO.setEditeur(logiciels.getEditeur());
-       logicielDTO.setDescription(logiciels.getDescription());
-       logicielDTO.setTypeLogicielId(logiciels.getTypeLogiciel().getId());
-       logicielDTO.setLibelle(logiciels.getLibelle());
-       logicielDTO.setVersion(logiciels.getVersion());
+        logicielDTO.setDescription(logiciels.getDescription());
+        logicielDTO.setTypeLogicielId(logiciels.getTypeLogiciel().getId());
+        logicielDTO.setLibelle(logiciels.getLibelle());
+        logicielDTO.setVersion(logiciels.getVersion());
         System.out.println(logicielDTO.toString());
-        return  logicielDTO  ;
+        return logicielDTO;
     }
 
-    public static Logiciels mapEntity(LogicielDTO logicielDTO){
-        Logiciels logiciels=  new Logiciels();
+    public static Logiciels mapEntity(LogicielDTO logicielDTO) {
+        Logiciels logiciels = new Logiciels();
         logiciels.setId(logicielDTO.getId());
         logiciels.setDateAchat(logicielDTO.getDateAchat());
         logiciels.setDateExpiration(logicielDTO.getDateExpiration());
@@ -127,6 +122,6 @@ public class LogicielDTO {
         logiciels.setDescription(logicielDTO.getDescription());
         logiciels.setLibelle(logicielDTO.getLibelle());
         logiciels.setVersion(logicielDTO.getVersion());
-        return  logiciels  ;
+        return logiciels;
     }
 }
