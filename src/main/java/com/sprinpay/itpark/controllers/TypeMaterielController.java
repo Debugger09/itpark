@@ -1,7 +1,5 @@
 package com.sprinpay.itpark.controllers;
 
-import com.sprinpay.itpark.domain.Employes;
-import com.sprinpay.itpark.domain.Materiels;
 import com.sprinpay.itpark.domain.TypeMateriel;
 import com.sprinpay.itpark.services.TypeMaterielService;
 import jakarta.validation.Valid;

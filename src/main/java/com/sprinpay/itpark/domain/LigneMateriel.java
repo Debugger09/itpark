@@ -1,6 +1,8 @@
 package com.sprinpay.itpark.domain;
 
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 import java.util.Objects;
 
@@ -15,6 +17,7 @@ public class LigneMateriel {
     @ManyToOne
     private Materiels materiel;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "date_attribution", nullable = false)
     private Date dateAttribution;
 

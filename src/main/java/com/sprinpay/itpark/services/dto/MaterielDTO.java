@@ -12,7 +12,6 @@ public class MaterielDTO {
     private String numeroSerie;
     private Boolean etatAchat;
     private Boolean mobilite;
-    @NotBlank(message = "Champ requis")
     private Long typeMaterielId;
 
     public Long getId() {
