@@ -40,8 +40,8 @@
                         <th scope="col">Modèle</th>
                         <th scope="col">Numéro de série</th>
                         <th scope="col">État d'achat</th>
-                        <th scope="col">Mobilité</th>
                         <th scope="col">Type de matériel</th>
+                        <th scope="col">Mobilité</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
@@ -55,11 +55,11 @@
                         <td>
                             <span th:text="${m.etatAchat ? 'Neuf' : 'Occasion'}"></span>
                         </td>
-                        <td>
-                            <span class="badge bg-success" th:if="${m.mobilite}">Oui</span>
-                            <span class="badge bg-danger" th:if="${!m.mobilite}">Non</span>
-                        </td>
                         <td th:text="${m.typeMateriel==null?'--':m.typeMateriel.libelle}"></td>
+                        <td>
+                            <span class="badge bg-success" th:if="${m.typeMateriel.mobilite}">Oui</span>
+                            <span class="badge bg-danger" th:if="${!m.typeMateriel.mobilite}">Non</span>
+                        </td>
                         <td>
 
 

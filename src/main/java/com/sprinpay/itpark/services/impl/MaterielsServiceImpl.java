@@ -17,7 +17,8 @@ public class MaterielsServiceImpl implements MaterielsService {
     private final MaterielsRepository materielsRepository;
     private final TypeMaterielRepository typeMaterielRepository;
 
-    public MaterielsServiceImpl(MaterielsRepository materielsRepository, TypeMaterielRepository typeMaterielRepository) {
+    public MaterielsServiceImpl(MaterielsRepository materielsRepository,
+            TypeMaterielRepository typeMaterielRepository) {
         this.materielsRepository = materielsRepository;
         this.typeMaterielRepository = typeMaterielRepository;
     }
@@ -41,17 +42,16 @@ public class MaterielsServiceImpl implements MaterielsService {
     @Override
     public Materiels save(MaterielDTO materielDTO) {
         System.out.println(materielDTO.toString());
-        Materiels materiels=new Materiels();
+        Materiels materiels = new Materiels();
         TypeMateriel typeMateriel = typeMaterielRepository.findById(materielDTO.getTypeMaterielId())
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + materielDTO.getTypeMaterielId()));
         materiels.setTypeMateriel(typeMateriel);
         materiels.setFabricant(materielDTO.getFabricant());
         materiels.setLibelle(materielDTO.getLibelle());
-        materiels.setMobilite(materielDTO.getMobilite());
         materiels.setModele(materielDTO.getModele());
         materiels.setNumeroSerie(materielDTO.getNumeroSerie());
         materiels.setEtatAchat(materielDTO.getEtatAchat());
-        if(materielDTO.getId()!=null){
+        if (materielDTO.getId() != null) {
             materiels.setId(materielDTO.getId());
         }
         return materielsRepository.save(materiels);

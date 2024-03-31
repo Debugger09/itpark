@@ -92,16 +92,15 @@ public class MaterielDTO {
                 '}';
     }
 
-  public static MaterielDTO mapDTO(Materiels materiels){
-       MaterielDTO materielDTO=  new  MaterielDTO();
-       materielDTO.setEtatAchat(materiels.getEtatAchat());
-       materielDTO.setFabricant(materiels.getFabricant());
-       materielDTO.setMobilite(materiels.getMobilite());
-       materielDTO.setModele(materiels.getModele());
-       materielDTO.setTypeMaterielId(materiels.getTypeMateriel().getId());
-       materielDTO.setLibelle(materiels.getLibelle());
-       materielDTO.setId(materiels.getId());
-       materielDTO.setNumeroSerie(materiels.getNumeroSerie());
-        return  materielDTO  ;
+    public static MaterielDTO mapDTO(Materiels materiels) {
+        MaterielDTO materielDTO = new MaterielDTO();
+        materielDTO.setEtatAchat(materiels.getEtatAchat());
+        materielDTO.setFabricant(materiels.getFabricant());
+        materielDTO.setModele(materiels.getModele());
+        materielDTO.setTypeMaterielId(materiels.getTypeMateriel().getId());
+        materielDTO.setLibelle(materiels.getLibelle());
+        materielDTO.setId(materiels.getId());
+        materielDTO.setNumeroSerie(materiels.getNumeroSerie());
+        return materielDTO;
     }
 }

@@ -25,6 +25,10 @@
                         <input type="text" id="libelle" class="form-control" th:field="*{libelle}" placeholder="Libellé">
                         <span th:if="${#fields.hasErrors('libelle')}" th:errors="*{libelle}" class="text-danger"></span>
                     </div>
+                    <div class="col-12 mb-3">
+                        <label for="mobilite" class="form-label">Mobilité</label>
+                        <input type="checkbox" id="mobilite" class="form-check-input" th:field="*{mobilite}">
+                    </div>
 
 
                     <div class="col-12">
