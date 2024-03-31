@@ -1,6 +1,5 @@
 package com.sprinpay.itpark.repository;
 
-import com.sprinpay.itpark.domain.Logiciels;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.sprinpay.itpark.domain.LigneLogiciel;

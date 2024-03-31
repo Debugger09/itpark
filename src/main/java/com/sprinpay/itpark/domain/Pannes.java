@@ -12,6 +12,7 @@ public class Pannes {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String diagnostic;
+    private Boolean besoin_piece;
     private Date date_diagnostic;
 
     @ManyToOne
@@ -35,6 +36,10 @@ public class Pannes {
         return materiel;
     }
 
+    public Boolean getBesoin_piece() {
+        return besoin_piece;
+    }
+
     // Setters
     public void setId(Long id) {
         this.id = id;
@@ -52,6 +57,10 @@ public class Pannes {
         this.materiel = materiel;
     }
 
+    public void setBesoin_piece(Boolean besoin_piece) {
+        this.besoin_piece = besoin_piece;
+    }
+
     // Override des méthodes equals et hashCode
     @Override
     public boolean equals(Object o) {
@@ -62,11 +71,12 @@ public class Pannes {
         Pannes pannes = (Pannes) o;
         return Objects.equals(id, pannes.id) &&
                 Objects.equals(diagnostic, pannes.diagnostic) &&
-                Objects.equals(date_diagnostic, pannes.date_diagnostic);
+                Objects.equals(date_diagnostic, pannes.date_diagnostic) &&
+                Objects.equals(besoin_piece, pannes.besoin_piece);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, diagnostic, date_diagnostic);
+        return Objects.hash(id, diagnostic, date_diagnostic, besoin_piece);
     }
 }
