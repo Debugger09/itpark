@@ -5,62 +5,91 @@
 >
 <head>
     <meta charset="UTF-8">
-    <title> Attribuer un matériel</title>
+    <title>Attribuer un matériel</title>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script> <!-- Inclure jQuery -->
 </head>
 <body>
 
 <div class="row justify-content-center" layout:fragment="content">
-    <form th:object="${ligneMaterielDTO}" method="post" th:action="@{/attribuer-materiels}" >
-    <div class="col-10">
-        <div class="card">
-            <div class="card-header">
-               Attribuer un matériel
-            </div>
-            <div class="card-body">
-
+    <form th:object="${ligneMaterielDTO}" method="post" th:action="@{/attribuer-materiels}">
+        <div class="col-10">
+            <div class="card">
+                <div class="card-header">
+                    Attribuer un matériel
+                </div>
+                <div class="card-body">
 
                     <div class="row mb-3">
-                        <label  class="col-sm-2 col-form-label">Matériel</label>
+                        <label class="col-sm-2 col-form-label">Matériel</label>
                         <div class="col-sm-10">
-                            <span   th:text="${materiel.get().libelle}"></span>
+                            <span th:text="${materiel.get().libelle}"></span>
                             <input type="hidden" th:field="*{materielId}">
                         </div>
                     </div>
 
-
                     <div class="row mb-3">
-                        <label for="employeId" class="col-sm-2 col-form-label">Attribué à</label>
+                        <label class="col-sm-2 col-form-label">Attribué à</label>
+                        <div class="col-sm-10">
+                            <input type="radio" id="employeOption" name="assignOption" value="employe" checked>
+                            <label for="employeOption">Employé</label>
+                            <input type="radio" id="serviceOption" name="assignOption" value="service">
+                            <label for="serviceOption">Service</label>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3" id="employeSelect">
+                        <label for="employeId" class="col-sm-2 col-form-label">Employé</label>
                         <div class="col-sm-10">
                             <select id="employeId" class="form-select" th:field="*{employeId}">
                                 <option value=""></option>
                                 <option th:each="e : ${employes}" th:value="${e.id}" th:text="${e.nom}"></option>
                             </select>
                         </div>
+                    </div>
 
+                    <div class="row mb-3" id="serviceSelect" style="display: none;"> <!-- Commence caché -->
+                        <label for="serviceId" class="col-sm-2 col-form-label">Service</label>
+                        <div class="col-sm-10">
+                            <select id="serviceId" class="form-select" th:field="*{serviceId}">
+                                <option value=""></option>
+                                <option th:each="e : ${services}" th:value="${e.id}" th:text="${e.libelle}"></option>
+                            </select>
+                        </div>
                     </div>
 
                     <div class="row mb-3">
-                        <label for="dateAttribution"class="col-sm-2 col-form-label">Date d'attribution</label>
+                        <label for="dateAttribution" class="col-sm-2 col-form-label">Date d'attribution</label>
                         <div class="col-sm-10">
-                            <input type="date"  id="dateAttribution" class="form-control" th:field="*{dateAttribution}">
+                            <input type="date" id="dateAttribution" class="form-control" th:field="*{dateAttribution}">
                             <span th:if="${#fields.hasErrors('dateAttribution')}" th:errors="*{dateAttribution}" class="text-danger"></span>
                         </div>
-
                     </div>
 
-
-
-
-            </div>
-            <div class="card-footer">
-                <div class="col-12 mt-3">
-                    <button class="btn btn-primary float-end">Ajouter</button>
+                </div>
+                <div class="card-footer">
+                    <div class="col-12 mt-3">
+                        <button class="btn btn-primary float-end">Ajouter</button>
+                    </div>
                 </div>
             </div>
         </div>
-
-    </div>
     </form>
 </div>
+
+<script th:inline="javascript">
+    /* Script pour basculer entre les options "Employé" et "Service" */
+    $(document).ready(function() {
+        $("#employeOption").click(function() {
+            $("#employeSelect").show();
+            $("#serviceSelect").hide();
+        });
+        
+        $("#serviceOption").click(function() {
+            $("#employeSelect").hide();
+            $("#serviceSelect").show();
+        });
+    });
+</script>
+
 </body>
 </html>

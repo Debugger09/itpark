@@ -3,10 +3,13 @@ package com.sprinpay.itpark.services.impl;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
 import com.sprinpay.itpark.domain.Techniciens;
 import com.sprinpay.itpark.repository.TechniciensRepository;
 import com.sprinpay.itpark.services.TechniciensService;
 
+@Service
 public class TechniciensServiceImpl implements TechniciensService {
     private final TechniciensRepository techniciensRepository;
 

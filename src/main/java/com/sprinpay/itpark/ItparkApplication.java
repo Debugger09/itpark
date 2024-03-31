@@ -43,4 +43,5 @@ public class ItparkApplication implements CommandLineRunner {
 			userRepository.saveAll(users);
 		}
 	}
+
 }
