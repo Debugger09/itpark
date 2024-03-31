@@ -1,5 +1,4 @@
 package com.sprinpay.itpark.services.dto;
-
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -12,6 +11,10 @@ public class LigneMaterielDTO {
     private Date dateAttribution;
     private Long employeId;
     private Long materielId;
+
+    private Long serviceId;
+
+    private String attribueA="EMPLOYE";
 
     public Long getEmployeId() {
         return employeId;
@@ -41,8 +44,12 @@ public class LigneMaterielDTO {
         return dateAttribution;
     }
 
-    public void setDateAttribution(Date dateAttribution) {
-        this.dateAttribution = dateAttribution;
+    public Long getServiceId() {
+        return serviceId;
+    }
+
+    public void setServiceId(Long serviceId) {
+        this.serviceId = serviceId;
     }
 
     @Override
@@ -52,6 +59,20 @@ public class LigneMaterielDTO {
                 ", dateAttribution=" + dateAttribution +
                 ", employeId=" + employeId +
                 ", materielId=" + materielId +
+                ", serviceId=" + serviceId +
+                ", attribueA='" + attribueA + '\'' +
                 '}';
+    }
+
+    public void setDateAttribution(Date dateAttribution) {
+        this.dateAttribution = dateAttribution;
+    }
+
+    public String getAttribueA() {
+        return attribueA;
+    }
+
+    public void setAttribueA(String attribueA) {
+        this.attribueA = attribueA;
     }
 }

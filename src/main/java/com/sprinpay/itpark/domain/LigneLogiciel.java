@@ -11,15 +11,13 @@ public class LigneLogiciel {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "id_materiels")
     private Materiels materiel;
 
     @ManyToOne
-    @JoinColumn(name = "id_logiciels")
     private Logiciels logiciel;
 
-    @Column(name = "date_installation")
-    private Date date_installation;
+
+    private Date dateInstallation;
 
     // Getters and setters
     public Long getId() {
@@ -46,23 +44,13 @@ public class LigneLogiciel {
         this.logiciel = logiciel;
     }
 
-    public Date getDate_installation() {
-        return date_installation;
+    public Date getDateInstallation() {
+        return dateInstallation;
     }
 
-    public void setDateInstallation(Date date_installation) {
-        this.date_installation = date_installation;
+    public void setDateInstallation(Date dateInstallation) {
+        this.dateInstallation = dateInstallation;
     }
 
-    // Override des méthodes equals et hashCode
 
-    @Override
-    public String toString() {
-        return "LigneLogiciel{" +
-                "id=" + id +
-                ", materiel=" + materiel +
-                ", logiciel=" + logiciel +
-                ", date_installation=" + date_installation +
-                '}';
-    }
 }

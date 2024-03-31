@@ -2,6 +2,7 @@ package com.sprinpay.itpark.controllers;
 
 import com.sprinpay.itpark.domain.Employes;
 import com.sprinpay.itpark.services.EmployesService;
+import com.sprinpay.itpark.services.ServicesService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,9 +18,11 @@ import java.util.List;
 
 public class EmployeController {
     private final EmployesService employesService;
+    private final ServicesService servicesService;
 
-    public EmployeController(EmployesService employesService) {
+    public EmployeController(EmployesService employesService, ServicesService servicesService) {
         this.employesService = employesService;
+        this.servicesService = servicesService;
     }
 
     @GetMapping("/employes")
@@ -30,7 +33,10 @@ public class EmployeController {
     }
 
     @GetMapping("/employe-form")
-    public String showFormEmploye(@ModelAttribute("employes") Employes employes) {
+    public String showFormEmploye(@ModelAttribute("employes") Employes employes,Model model) {
+
+        model.addAttribute("services", servicesService.findAll());
+
         return "employes/add-employe";
     }
 
@@ -50,19 +56,11 @@ public class EmployeController {
         Employes employes = employesService.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         System.out.println(employes);
-
+        model.addAttribute("services", servicesService.findAll());
         model.addAttribute("employes", employes);
-        return "employes/update-employe";
+        return "employes/add-employe";
     }
 
-    @PostMapping("/employe-update/{id}")
-    public String updateEmploye(@PathVariable("id") Long id, @Valid Employes employes) {
-
-        employes.setId(id);
-        System.out.println(employes);
-        employesService.save(employes);
-        return "redirect:/employes";
-    }
 
     @GetMapping("/employe-delete/{id}")
     public String deleteEmploye(@PathVariable Long id) {

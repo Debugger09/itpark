@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="row justify-content-center" layout:fragment="content">
+
+<div class="card">
+    <div class="card-header">Installer un logiciel</div>
+    <div class="card-body profile">
+        <div class="row mb-3">
+            <div class="col-lg-3 col-md-4 fw-bold ">Machine</div>
+            <div class="col-lg-9 col-md-8" th:text="${materiel.libelle}"></div>
+        </div>
+        <div class="row  mb-3">
+            <div class="col-lg-3 col-md-4 label fw-bold">Modele</div>
+            <div class="col-lg-9 col-md-8" th:text="${materiel.modele}"></div>
+        </div>
+        <div class="row  mb-3">
+            <div class="col-lg-3 col-md-4 label fw-bold">Type</div>
+            <div class="col-lg-9 col-md-8" th:text="${materiel.typeMateriel.libelle}"></div>
+        </div>
+
+
+    </div>
+</div>
+
+    <div class="card">
+        <div class="card-header">  <h6>Installer un logiciel</h6></div>
+        <div class="card-body">
+            <div class="row bt-5">
+                <div class="col-md-12">
+
+                    <form th:object="${ligneLogicielDTO}" method="post" th:action="@{/install-logiciel}" class="row">
+                        <input  th:field="*{materielId}"  type="hidden" class="form-control">
+                        <div class="col-12">
+                            <label for="typeLogicielId" class="form-label">Logiciel</label>
+                            <select id="typeLogicielId" class="form-select" th:field="*{logicielId}">
+                                <option value=""></option>
+                                <option th:each="l : ${logiciels}" th:value="${l.id}" th:text="${l.libelle}"></option>
+                            </select>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="dateInstallation" class="form-label">Date d'installation</label>
+                            <input  th:field="*{dateInstallation}" id="dateInstallation" type="date" class="form-control">
+                        </div>
+
+                        <div class="col-12" th:if="${error}">
+                           <span class="text-danger" th:text="${error}"></span>
+                        </div>
+
+
+                        <div class="col-12 mt-3">
+                            <button class="btn btn-primary float-end">Ajouter</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row bt-5">
+                <div class="col-md-12">
+                    <h6>Logiciels installés</h6>
+                </div>
+                <div class="col-md-12">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Libellé</th>
+                            <th scope="col">Version</th>
+                            <th scope="col">Installé le</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="m: ${logicielByMateriel}">
+                            <td th:text="${m.id}"></td>
+                            <td th:text="${m.logiciel.libelle}"></td>
+                            <td th:text="${m.logiciel.version}"></td>
+                            <td th:text="${#dates.format(m.dateInstallation, 'dd-MM-yyyy')}"></td>
+                            <td>
+                                <a th:href="@{/ligne-logiciel-delete/{id}(id=${m.id})}" title="Désinstaller"><i class="fa-solid fa-trash text-danger"></i></a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

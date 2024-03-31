@@ -61,7 +61,9 @@
                         </td>
                         <td th:text="${m.typeMateriel==null?'--':m.typeMateriel.libelle}"></td>
                         <td>
-                            
+
+
+                            <a th:href="@{/install-logiciel/{id}(id=${m.id})}" title="ajouter un logiciel"><i class="fa-solid fa-plus"></i></a>
                                 <a th:href="@{/materiel-edit/{id}(id=${m.id})}" title="modifier"><i class="fa-solid fa-pen-to-square"></i></a>
                                 <a th:href="@{/materiel-delete/{id}(id=${m.id})}" title="supprimer"><i class="fa-solid fa-trash text-danger"></i></a>
                                 <a th:href="@{/attribut-materiel-form/{id}(id=${m.id})}" title="Attribuer"><i class="fa-solid fa-share"></i></a>

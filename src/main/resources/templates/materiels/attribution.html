@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
+      layout:decorate="~{layout}"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Attribuer un matériel</title>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script> <!-- Inclure jQuery -->
+</head>
+<body>
+
+<div class="row justify-content-center" layout:fragment="content">
+    <div class="card">
+        <div class="card-body">
+            <div class="card-title">
+                <div class="row">
+                    <div class="col-6">
+                        <h5>Liste des attributions de materiel</h5>
+                    </div>
+                    <div class="col-6">
+                        <div class="filter float-end">
+                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots" style="font-size: 29px;"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                <li class="dropdown-header text-start">
+                                    <h6>Option</h6>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Materiel</th>
+                    <th scope="col">Attribution</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Date d'attribution</th>
+                    <th scope="col">Date de restitution</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="m: ${ligneMateriels}">
+                    <td th:text="${m.id}"></td>
+                    <td th:text="${m.materiel.libelle}"></td>
+                    <td th:text="${m.attribueA}"></td>
+
+                    </td>
+                    <td>
+                        <span th:if="${m.attribueA=='SERVICE'}" th:text="${m.services.libelle}"></span>
+                        <span th:if="${m.attribueA=='EMPLOYE'}" th:text="${m.employe.nom}"></span>
+                    </td>
+                    <td th:text="${#dates.format(m.dateAttribution, 'dd-MM-yyyy')}"></td>
+                    <td th:text="${#dates.format(m.dateRestitution, 'dd-MM-yyyy')}"></td>
+                    <td>
+
+                        <a th:href="@{/attribut-materiel-form/{id}(id=${m.id})}" title="Restitution"><i class="fa-solid fa-share-alt-square"></i></a>
+
+
+
+
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+        $(document).ready(function () {
+            // Au chargement de la page, vérifiez l'état initial des boutons radio et affichez/masquez le champ de sélection en conséquence
+            toggleServiceSelect();
+
+            // Ajoutez un écouteur d'événements pour les changements d'état des boutons radio
+            $('input[name="attribueA"]').change(function () {
+                toggleServiceSelect();
+            });
+
+            function toggleServiceSelect() {
+                var attribueAValue = $('input[name="attribueA"]:checked').val();
+                console.log("===========================>",attribueAValue)
+                if (attribueAValue === 'SERVICE') {
+                    $('#servicesSelect').show();
+                } else {
+                    $('#servicesSelect').hide();
+                }
+
+                if (attribueAValue === 'EMPLOYE') {
+                    $('#employeSelect').show();
+                } else {
+                    $('#employeSelect').hide();
+                }
+            }
+        });
+    </script>
+</th:block>
+</body>
+</html>

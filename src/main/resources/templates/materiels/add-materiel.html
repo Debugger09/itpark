@@ -22,50 +22,54 @@
                     Ajouter un matériel
                 </div>
                 <div class="card-body">
-                    <div class="col-12">
+                    <div class="col-12 mb-3">
                         <label for="libelle" class="form-label">Libellé</label>
                         <input type="hidden" th:field="*{id}">
                         <input type="text" id="libelle" class="form-control" th:field="*{libelle}" placeholder="Libellé">
                         <span th:if="${#fields.hasErrors('libelle')}" th:errors="*{libelle}" class="text-danger"></span>
                     </div>
 
-                    <div class="col-12">
+                    <div class="col-12 mb-">
                         <label for="fabricant" class="form-label">Fabricant</label>
                         <input type="text" id="fabricant" class="form-control" th:field="*{fabricant}" placeholder="Fabricant">
                         <span th:if="${#fields.hasErrors('fabricant')}" th:errors="*{fabricant}" class="text-danger"></span>
                     </div>
 
-                    <div class="col-12">
+                    <div class="col-12 mb-3">
                         <label for="modele" class="form-label">Modèle</label>
                         <input type="text" id="modele" class="form-control" th:field="*{modele}" placeholder="Modèle">
                         <span th:if="${#fields.hasErrors('modele')}" th:errors="*{modele}" class="text-danger"></span>
                     </div>
 
-                    <div class="col-12">
+                    <div class="col-12 mb-3">
                         <label for="numeroSerie" class="form-label">Numéro de série</label>
                         <input type="text" id="numeroSerie" class="form-control" th:field="*{numeroSerie}" placeholder="Numéro de série">
                         <span th:if="${#fields.hasErrors('numeroSerie')}" th:errors="*{numeroSerie}" class="text-danger"></span>
                     </div>
 
-                    <div class="col-12">
+                    <div class="col-12 mb-3">
                         <label class="form-label">État d'achat</label>
-                        <div class="form-check">
-                            <input type="radio" id="etatAchatNeuf" class="form-check-input" th:field="*{etatAchat}" value="true">
-                            <label for="etatAchatNeuf" class="form-check-label">Neuf</label>
+                        <div class="row">
+                            <div class="form-check col-md-2">
+                                <input type="radio" id="etatAchatNeuf" class="form-check-input" th:field="*{etatAchat}" value="true">
+                                <label for="etatAchatNeuf" class="form-check-label">Neuf</label>
+                            </div>
+                            <div class="form-check col-md-2">
+                                <input type="radio" id="etatAchatOccasion" class="form-check-input" th:field="*{etatAchat}" value="false">
+                                <label for="etatAchatOccasion" class="form-check-label">Occasion</label>
+                            </div>
                         </div>
-                        <div class="form-check">
-                            <input type="radio" id="etatAchatOccasion" class="form-check-input" th:field="*{etatAchat}" value="false">
-                            <label for="etatAchatOccasion" class="form-check-label">Occasion</label>
-                        </div>
+
+
                     </div>
 
-                    <div class="col-12">
+                    <div class="col-12 mb-3">
                         <label for="mobilite" class="form-label">Mobilité</label>
                         <input type="checkbox" id="mobilite" class="form-check-input" th:field="*{mobilite}">
                     </div>
 
                     <!-- Champs pour les clés étrangères -->
-                    <div class="col-12">
+                    <div class="col-12 mb-3">
                         <label for="typeMateriel" class="form-label">Type de matériel</label>
                         <select id="typeMateriel" class="form-select" th:field="*{typeMaterielId}">
                             <option value=""></option>

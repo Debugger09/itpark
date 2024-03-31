@@ -999,15 +999,15 @@ h6 {
 }
 
 .iconslist .label {
-  font-family: var(--bs-font-monospace);
-  display: inline-block;
-  width: 100%;
-  overflow: hidden;
-  padding: 0.25rem;
-  font-size: 12px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  color: #666;
+  font-family: var(--bs-font-monospace) !important;
+  display: inline-block !important;
+  width: 100% !important;
+  overflow: hidden !important;
+  padding: 0.25rem !important;
+  font-size: 12px !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  color: #666 !important;
 }
 
 /*--------------------------------------------------------------
@@ -1051,13 +1051,13 @@ h6 {
 }
 
 .profile .profile-overview .label {
-  font-weight: 600;
-  color: rgba(1, 41, 112, 0.6);
+  font-weight: 600 !important;
+  color: rgba(1, 41, 112, 0.6) !important;
 }
 
 .profile .profile-edit label {
-  font-weight: 600;
-  color: rgba(1, 41, 112, 0.6);
+  font-weight: 600 !important;
+  color: rgba(1, 41, 112, 0.6) !important;
 }
 
 .profile .profile-edit img {

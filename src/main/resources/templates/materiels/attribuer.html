@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
       layout:decorate="~{layout}"
 >
 <head>
@@ -30,14 +30,24 @@
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label">Attribué à</label>
                         <div class="col-sm-10">
-                            <input type="radio" id="employeOption" name="assignOption" value="employe" checked>
+                            <input type="radio" id="employeOption" th:field="*{attribueA}" name="attribueA" value="EMPLOYE" th:value="'EMPLOYE'" checked>
                             <label for="employeOption">Employé</label>
-                            <input type="radio" id="serviceOption" name="assignOption" value="service">
+                            <input type="radio" id="serviceOption" th:field="*{attribueA}"  name="attribueA" value="SERVICE" th:value="'SERVICE'">
                             <label for="serviceOption">Service</label>
                         </div>
                     </div>
 
-                    <div class="row mb-3" id="employeSelect">
+                    <div class="row mb-3" id="servicesSelect" >
+                        <label for="service" class="col-sm-2 col-form-label">Service</label>
+                        <div class="col-sm-10">
+                            <select id="service" class="form-select" th:field="*{serviceId}">
+                                <option value=""></option>
+                                <option th:each="e : ${services}" th:value="${e.id}" th:text="${e.libelle}"></option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3" id="employeSelect" >
                         <label for="employeId" class="col-sm-2 col-form-label">Employé</label>
                         <div class="col-sm-10">
                             <select id="employeId" class="form-select" th:field="*{employeId}">
@@ -47,21 +57,23 @@
                         </div>
                     </div>
 
-                    <div class="row mb-3" id="serviceSelect" style="display: none;"> <!-- Commence caché -->
-                        <label for="serviceId" class="col-sm-2 col-form-label">Service</label>
-                        <div class="col-sm-10">
-                            <select id="serviceId" class="form-select" th:field="*{serviceId}">
-                                <option value=""></option>
-                                <option th:each="e : ${services}" th:value="${e.id}" th:text="${e.libelle}"></option>
-                            </select>
-                        </div>
-                    </div>
+
 
                     <div class="row mb-3">
                         <label for="dateAttribution" class="col-sm-2 col-form-label">Date d'attribution</label>
                         <div class="col-sm-10">
                             <input type="date" id="dateAttribution" class="form-control" th:field="*{dateAttribution}">
                             <span th:if="${#fields.hasErrors('dateAttribution')}" th:errors="*{dateAttribution}" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row" th:if="${noAccord} or ${noMobilite} or ${error} or ${materielAttribut}">
+                        <div class="col-md-12" >
+                             <span th:text="${noAccord}" th:if="noAccord" class="text-danger"></span>
+                            <span th:text="${noMobilite}" th:if="noMobilite" class="text-danger"></span>
+                            <span th:text="${materielAttribut}" th:if="noMobilite" class="text-danger"></span>
+                            <span th:text="${error}" th:if="noMobilite" class="text-danger"></span>
+
                         </div>
                     </div>
 
@@ -76,20 +88,34 @@
     </form>
 </div>
 
-<script th:inline="javascript">
-    /* Script pour basculer entre les options "Employé" et "Service" */
-    $(document).ready(function() {
-        $("#employeOption").click(function() {
-            $("#employeSelect").show();
-            $("#serviceSelect").hide();
-        });
-        
-        $("#serviceOption").click(function() {
-            $("#employeSelect").hide();
-            $("#serviceSelect").show();
-        });
-    });
-</script>
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+        $(document).ready(function () {
+            // Au chargement de la page, vérifiez l'état initial des boutons radio et affichez/masquez le champ de sélection en conséquence
+            toggleServiceSelect();
 
+            // Ajoutez un écouteur d'événements pour les changements d'état des boutons radio
+            $('input[name="attribueA"]').change(function () {
+                toggleServiceSelect();
+            });
+
+            function toggleServiceSelect() {
+                var attribueAValue = $('input[name="attribueA"]:checked').val();
+                console.log("===========================>",attribueAValue)
+                if (attribueAValue === 'SERVICE') {
+                    $('#servicesSelect').show();
+                } else {
+                    $('#servicesSelect').hide();
+                }
+
+                if (attribueAValue === 'EMPLOYE') {
+                    $('#employeSelect').show();
+                } else {
+                    $('#employeSelect').hide();
+                }
+            }
+        });
+    </script>
+</th:block>
 </body>
 </html>

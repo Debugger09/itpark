@@ -24,16 +24,9 @@ public class ServiceController {
 
         List<Services> services = servicesService.findAll();
         model.addAttribute("services", services);
-        return "services/services"; // Assurez-vous que le nom du fichier HTML correspond
+        return "services/service"; // Assurez-vous que le nom du fichier HTML correspond
     }
 
-    @GetMapping("/services/{id}")
-    public String showServiceDetails(@PathVariable Long id, Model model) {
-        Services service = servicesService.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid service Id:" + id));
-        model.addAttribute("service", service);
-        return "services/services"; // Assurez-vous que le nom du fichier HTML correspond
-    }
 
     @GetMapping("/services/new")
     public String showAddServiceForm(@ModelAttribute("service") Services service) {

@@ -21,7 +21,6 @@ public class Employes {
     private boolean accordSortie;
 
     @ManyToOne
-    @JoinColumn(name = "id_services")
     private Services service; // Utilisation d'une relation ManyToOne pour représenter la clé étrangère
 
     // Getters et Setters
@@ -107,5 +106,20 @@ public class Employes {
                 ", accordSortie='" + accordSortie + '\'' +
                 ", service=" + service +
                 '}';
+    }
+
+    @Transient
+    private Long serviceId;
+
+    public boolean isAccordSortie() {
+        return accordSortie;
+    }
+
+    public Long getServiceId() {
+        return serviceId;
+    }
+
+    public void setServiceId(Long serviceId) {
+        this.serviceId = serviceId;
     }
 }
