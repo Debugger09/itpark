@@ -6,6 +6,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Dashbord</title>
+    <style>
+        .card-counter i {
+            font-size: 60px; /* Taille de police des icônes */.count-numbers {margin-bottom: 10px; /* Augmente l'espace en hauteur entre les spans */
+        }
+        }
+        
+        
+    </style>
+    
 </head>
 <body>
 <div  layout:fragment="content" class="container">
@@ -14,7 +23,6 @@
         <div class="col-md-3">
             <div class="card-counter primary">
                 <i class="fa fa-users"></i>
-
                 <span class="count-numbers" th:text="${employe}"></span>
                 <span class="float-end count-name">Employes</span>
             </div>
