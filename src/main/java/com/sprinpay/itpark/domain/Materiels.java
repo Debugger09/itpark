@@ -14,7 +14,6 @@ public class Materiels {
     private String modele;
     private String numeroSerie;
     private Boolean etatAchat;
-    private Boolean mobilite;
 
     // Champs pour les clés étrangères
 
@@ -46,10 +45,6 @@ public class Materiels {
         return etatAchat;
     }
 
-    public Boolean getMobilite() {
-        return mobilite;
-    }
-
     // Setters
     public void setId(Long id) {
         this.id = id;
@@ -75,10 +70,6 @@ public class Materiels {
         this.etatAchat = etatAchat;
     }
 
-    public void setMobilite(Boolean mobilite) {
-        this.mobilite = mobilite;
-    }
-
     // Getter et Setter pour la relation avec la table TypeMateriel
     public TypeMateriel getTypeMateriel() {
         return typeMateriel;
@@ -99,7 +90,6 @@ public class Materiels {
                 ", modele='" + modele + '\'' +
                 ", numeroSerie='" + numeroSerie + '\'' +
                 ", etatAchat=" + etatAchat +
-                ", mobilite=" + mobilite +
                 ", typeMateriel=" + typeMateriel +
                 '}';
     }

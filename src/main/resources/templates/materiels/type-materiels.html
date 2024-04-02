@@ -36,6 +36,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Libellé</th>
+                        <th scope="col">Mobilité</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
@@ -43,6 +44,10 @@
                     <tr th:each="m: ${typemateriels}">
                         <td th:text="${m.id}"></td>
                         <td th:text="${m.libelle}"></td>
+                        <td>
+                            <span class="badge bg-success" th:if="${m.mobilite}">Oui</span>
+                            <span class="badge bg-danger" th:if="${!m.mobilite}">Non</span>
+                        </td>
                         <td>
                             <a th:href="@{/type-materiel-edit/{id}(id=${m.id})}"><i class="fa-solid fa-pen-to-square"></i></a>
                             <a th:href="@{/type-materiel-delete/{id}(id=${m.id})}"><i class="fa-solid fa-trash text-danger"></i></a>

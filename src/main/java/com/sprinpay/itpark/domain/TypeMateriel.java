@@ -13,6 +13,7 @@ public class TypeMateriel {
     private Long id;
     @NotBlank(message = "Champ requis")
     private String libelle;
+    private Boolean mobilite;
 
     // Getters et Setters
     public Long getId() {
@@ -31,6 +32,14 @@ public class TypeMateriel {
         this.libelle = libelle;
     }
 
+    public Boolean getMobilite() {
+        return mobilite;
+    }
+
+    public void setMobilite(Boolean mobilite) {
+        this.mobilite = mobilite;
+    }
+
     // Override equals() et hashCode()
     @Override
     public boolean equals(Object o) {
@@ -39,12 +48,13 @@ public class TypeMateriel {
         if (o == null || getClass() != o.getClass())
             return false;
         TypeMateriel that = (TypeMateriel) o;
-        return Objects.equals(id, that.id) && Objects.equals(libelle, that.libelle);
+        return Objects.equals(id, that.id) && Objects.equals(libelle, that.libelle)
+                && Objects.equals(mobilite, that.mobilite);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, libelle);
+        return Objects.hash(id, libelle, mobilite);
     }
 
     @Override
@@ -52,6 +62,8 @@ public class TypeMateriel {
         return "TypeMateriel{" +
                 "id=" + id +
                 ", libelle='" + libelle + '\'' +
+                ", mobilite='" + mobilite + '\'' +
                 '}';
     }
+
 }

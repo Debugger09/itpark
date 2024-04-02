@@ -1,8 +1,5 @@
 package com.sprinpay.itpark.services.dto;
 
-import com.sprinpay.itpark.domain.Logiciels;
-import com.sprinpay.itpark.domain.Materiels;
-import jakarta.validation.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -11,15 +8,12 @@ public class LigneLogicielDTO {
 
     private Long id;
 
-
-
     private Long materielId;
 
     private Long logicielId;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
 
     private Date dateInstallation;
-
 
     public Long getId() {
         return id;
@@ -28,10 +22,6 @@ public class LigneLogicielDTO {
     public void setId(Long id) {
         this.id = id;
     }
-
-
-
-
 
     public Date getDateInstallation() {
         return dateInstallation;

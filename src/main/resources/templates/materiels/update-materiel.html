@@ -40,7 +40,6 @@
                         <th scope="col">Modèle</th>
                         <th scope="col">Numéro de Série</th>
                         <th scope="col">État d'Achat</th>
-                        <th scope="col">Mobilité</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
@@ -54,10 +53,6 @@
                         <td>
                             <span th:if="${materiel.etatAchat}" class="badge bg-success">Acheté</span>
                             <span th:unless="${materiel.etatAchat}" class="badge bg-danger">Non acheté</span>
-                        </td>
-                        <td>
-                            <span th:if="${materiel.mobilite}" class="badge bg-success">Oui</span>
-                            <span th:unless="${materiel.mobilite}" class="badge bg-danger">Non</span>
                         </td>
                         <td>
                             <a th:href="@{/materiel-edit/{id}(id=${materiel.id})}"><i class="fa-solid fa-pen-to-square"></i></a>

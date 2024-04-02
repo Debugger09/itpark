@@ -13,7 +13,7 @@ public class Pannes {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String diagnostic;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Boolean besoinPiece;
     private Date dateDiagnostic;
 
     @ManyToOne
@@ -34,6 +34,8 @@ public class Pannes {
     public Materiels getMateriel() {
         return materiel;
     }
+
+
 
     // Setters
     public void setId(Long id) {
@@ -59,11 +61,21 @@ public class Pannes {
     }
     // Override des méthodes equals et hashCode
 
+
+    public Boolean getBesoinPiece() {
+        return besoinPiece;
+    }
+
+    public void setBesoinPiece(Boolean besoinPiece) {
+        this.besoinPiece = besoinPiece;
+    }
+
     @Override
     public String toString() {
         return "Pannes{" +
                 "id=" + id +
                 ", diagnostic='" + diagnostic + '\'' +
+                ", besoinPiece=" + besoinPiece +
                 ", dateDiagnostic=" + dateDiagnostic +
                 ", materiel=" + materiel +
                 '}';
