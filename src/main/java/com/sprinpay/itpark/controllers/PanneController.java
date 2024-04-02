@@ -1,11 +1,9 @@
 package com.sprinpay.itpark.controllers;
 
-
-import com.sprinpay.itpark.domain.Materiels;
 import com.sprinpay.itpark.domain.Pannes;
 import com.sprinpay.itpark.services.MaterielsService;
 import com.sprinpay.itpark.services.PannesService;
-import com.sprinpay.itpark.services.dto.MaterielDTO;
+
 import com.sprinpay.itpark.services.dto.PanneDTO;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
@@ -28,16 +26,16 @@ public class PanneController {
     }
 
     @GetMapping("/pannes")
-    String list(Model model){
-        model.addAttribute("pannes",pannesService.findAll());
+    String list(Model model) {
+        model.addAttribute("pannes", pannesService.findAll());
         return "pannes/pannes";
 
     }
 
     @GetMapping("/panne-form")
-    public String showForm(@ModelAttribute("panneDTO") PanneDTO panneDTO,Model model) {
+    public String showForm(@ModelAttribute("panneDTO") PanneDTO panneDTO, Model model) {
 
-        model.addAttribute("materiels",materielsService.findAll());
+        model.addAttribute("materiels", materielsService.findAll());
 
         return "pannes/add-panne";
     }
@@ -62,7 +60,7 @@ public class PanneController {
 
         Pannes pannes = pannesService.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid materiel Id:" + id));
-        model.addAttribute("materiels",materielsService.findAll());
+        model.addAttribute("materiels", materielsService.findAll());
         model.addAttribute("panneDTO", PanneDTO.mapDTO(pannes));
         return "pannes/add-panne";
     }

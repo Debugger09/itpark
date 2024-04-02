@@ -23,7 +23,8 @@ public class LigneMaterielServiceImpl implements LigneMaterielService {
     private final EmployesRepository employesRepository;
     private final ServicesRepository servicesRepository;
 
-    public LigneMaterielServiceImpl(LigneMaterielRepository materielRepository, MaterielsRepository materielsRepository, EmployesRepository employesRepository, ServicesRepository servicesRepository) {
+    public LigneMaterielServiceImpl(LigneMaterielRepository materielRepository, MaterielsRepository materielsRepository,
+            EmployesRepository employesRepository, ServicesRepository servicesRepository) {
         this.ligneMaterielRepository = materielRepository;
         this.materielsRepository = materielsRepository;
         this.employesRepository = employesRepository;
@@ -44,26 +45,22 @@ public class LigneMaterielServiceImpl implements LigneMaterielService {
     public LigneMateriel save(LigneMaterielDTO ligneMaterielDTO) {
         System.out.println(ligneMaterielDTO.toString());
 
-        LigneMateriel ligneMateriel=new LigneMateriel();
+        LigneMateriel ligneMateriel = new LigneMateriel();
 
-
-        Optional<Materiels> materiels=materielsRepository.findById(ligneMaterielDTO.getMaterielId());
+        Optional<Materiels> materiels = materielsRepository.findById(ligneMaterielDTO.getMaterielId());
         materiels.ifPresent(ligneMateriel::setMateriel);
 
-        if(ligneMaterielDTO.getAttribueA().equals("EMPLOYE")){
-            Optional<Employes> employes=employesRepository.findById(ligneMaterielDTO.getEmployeId());
+        if (ligneMaterielDTO.getAttribueA().equals("EMPLOYE")) {
+            Optional<Employes> employes = employesRepository.findById(ligneMaterielDTO.getEmployeId());
             employes.ifPresent(ligneMateriel::setEmploye);
         }
 
-        if(ligneMaterielDTO.getAttribueA().equals("SERVICE")){
-            Optional<Services> services=servicesRepository.findById(ligneMaterielDTO.getServiceId());
+        if (ligneMaterielDTO.getAttribueA().equals("SERVICE")) {
+            Optional<Services> services = servicesRepository.findById(ligneMaterielDTO.getServiceId());
             services.ifPresent(ligneMateriel::setServices);
         }
         ligneMateriel.setDateAttribution(ligneMaterielDTO.getDateAttribution());
         ligneMateriel.setAttribueA(ligneMaterielDTO.getAttribueA());
-
-
-
 
         return ligneMaterielRepository.save(ligneMateriel);
     }
@@ -72,4 +69,5 @@ public class LigneMaterielServiceImpl implements LigneMaterielService {
     public void deleteById(Long id) {
         ligneMaterielRepository.deleteById(id);
     }
+
 }

@@ -19,23 +19,13 @@
                 </div>
                 <div class="card-body">
 
-                        <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label">Matériel</label>
-                            <div class="col-sm-10">
-                                <!-- Vérifier si le formulaire provient de "/attribution" -->
-                                <span th:if="${#httpServletRequest.getRequestURI() == '/attribuer-materiels'}">
-                                    <!-- Afficher le select si le formulaire provient de "/attribution" -->
-                                    <select class="form-select" th:field="*{materielId}">
-                                        <!-- Boucle sur tous les matériels pour les afficher dans le select -->
-                                        <option th:each="materiel : ${materiels}" th:value="${materiel.id}" th:text="${materiel.libelle}"></option>
-                                    </select>
-                                </span>
-                                <!-- Si le formulaire ne provient pas de "/attribution", afficher simplement le libellé du matériel -->
-                                <span th:unless="${#httpServletRequest.getRequestURI() == '/attribuer-materiels'}" th:text="${materiel.get().libelle}"></span>
-                                <input type="hidden" th:field="*{materielId}">
-                            </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Matériel</label>
+                        <div class="col-sm-10">
+                            <span th:text="${materiel.get().libelle}"></span>
+                            <input type="hidden" th:field="*{materielId}">
                         </div>
-                    
+                    </div>
 
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label">Attribué à</label>

@@ -1,6 +1,5 @@
 package com.sprinpay.itpark.services.dto;
 
-import com.sprinpay.itpark.domain.Materiels;
 import com.sprinpay.itpark.domain.Pannes;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -12,7 +11,25 @@ public class PanneDTO {
     private String diagnostic;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateDiagnostic;
+    private Boolean besoinPiece;
+    private Boolean reparable;
     private Long materielId;
+
+    public Boolean getBesoinPiece() {
+        return besoinPiece;
+    }
+
+    public void setBesoinPiece(Boolean besoinPiece) {
+        this.besoinPiece = besoinPiece;
+    }
+
+    public Boolean getReparable() {
+        return reparable;
+    }
+
+    public void setReparable(Boolean reparable) {
+        this.reparable = reparable;
+    }
 
     public Long getId() {
         return id;
@@ -52,16 +69,20 @@ public class PanneDTO {
                 "id=" + id +
                 ", diagnostic='" + diagnostic + '\'' +
                 ", dateDiagnostic=" + dateDiagnostic +
+                ", reparable=" + reparable +
+                ", besoinPiece=" + besoinPiece +
                 ", materielId=" + materielId +
                 '}';
     }
 
-    public static PanneDTO mapDTO(Pannes pannes){
-        PanneDTO panneDTO=  new PanneDTO();
+    public static PanneDTO mapDTO(Pannes pannes) {
+        PanneDTO panneDTO = new PanneDTO();
         panneDTO.setDateDiagnostic(pannes.getDateDiagnostic());
         panneDTO.setId(pannes.getId());
         panneDTO.setDiagnostic(pannes.getDiagnostic());
+        panneDTO.setReparable(pannes.getReparable());
+        panneDTO.setBesoinPiece(pannes.getBesoinPiece());
         panneDTO.setMaterielId(pannes.getMateriel().getId());
-        return  panneDTO  ;
+        return panneDTO;
     }
 }

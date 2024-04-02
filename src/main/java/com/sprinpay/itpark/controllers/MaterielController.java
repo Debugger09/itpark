@@ -64,4 +64,5 @@ public class MaterielController {
         model.addAttribute("materielDTO", MaterielDTO.mapDTO(materiels));
         return "materiels/add-materiel";
     }
+
 }

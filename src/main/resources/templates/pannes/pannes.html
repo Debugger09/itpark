@@ -36,7 +36,9 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Materiel</th>
+                        <th scope="col">Besoin de pieces</th>
                         <th scope="col">Diagnostic</th>
+                        <th scope="col">Reparable</th>
                         <th scope="col">Date</th>
 
                         <th scope="col">Action</th>
@@ -46,7 +48,15 @@
                     <tr th:each="m: ${pannes}">
                         <td th:text="${m.id}"></td>
                         <td th:text="${m.materiel.libelle}"></td>
+                        <td>
+                            <span class="badge bg-success" th:if="${m.besoinPiece != null && m.besoinPiece}">Oui</span>
+                            <span class="badge bg-danger" th:if="${m.besoinPiece != null && !m.besoinPiece}">Non</span>
+                        </td>
                         <td th:text="${m.diagnostic}"></td>
+                        <td>
+                            <span class="badge bg-success" th:if="${m.reparable != null && m.reparable}">Oui</span>
+                            <span class="badge bg-danger" th:if="${m.reparable != null && !m.reparable}">Non</span>
+                        </td>
                         <td th:text="${#dates.format(m.dateDiagnostic, 'dd-MM-yyyy')}"></td>
                         <td>
                             <a th:href="@{/panne-edit/{id}(id=${m.id})}"><i class="fa-solid fa-pen-to-square"></i></a>

@@ -1,10 +1,7 @@
 package com.sprinpay.itpark.domain;
 
 import java.util.Date;
-import java.util.Objects;
-
 import jakarta.persistence.*;
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "pannes")
@@ -13,6 +10,7 @@ public class Pannes {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String diagnostic;
+    private Boolean reparable;
     private Boolean besoinPiece;
     private Date dateDiagnostic;
 
@@ -29,13 +27,13 @@ public class Pannes {
         return diagnostic;
     }
 
-
-
     public Materiels getMateriel() {
         return materiel;
     }
 
-
+    public Boolean getReparable() {
+        return reparable;
+    }
 
     // Setters
     public void setId(Long id) {
@@ -45,8 +43,6 @@ public class Pannes {
     public void setDiagnostic(String diagnostic) {
         this.diagnostic = diagnostic;
     }
-
-
 
     public void setMateriel(Materiels materiel) {
         this.materiel = materiel;
@@ -59,8 +55,10 @@ public class Pannes {
     public void setDateDiagnostic(Date dateDiagnostic) {
         this.dateDiagnostic = dateDiagnostic;
     }
-    // Override des méthodes equals et hashCode
 
+    public void setReparable(Boolean reparable) {
+        this.reparable = reparable;
+    }
 
     public Boolean getBesoinPiece() {
         return besoinPiece;
@@ -78,6 +76,7 @@ public class Pannes {
                 ", besoinPiece=" + besoinPiece +
                 ", dateDiagnostic=" + dateDiagnostic +
                 ", materiel=" + materiel +
+                ", reparable=" + reparable +
                 '}';
     }
 }

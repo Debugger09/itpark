@@ -5,7 +5,7 @@
 >
 <head>
     <meta charset="UTF-8">
-    <title>Liste des matériels attribués</title>
+    <title>Attribuer un matériel</title>
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script> <!-- Inclure jQuery -->
 </head>
 <body>
@@ -24,7 +24,6 @@
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                 <li class="dropdown-header text-start">
                                     <h6>Option</h6>
-                                    <li><a class="dropdown-item" th:href="@{/attribuer-materiels}">Ajouter</a></li>
                                 </li>
 
                             </ul>
@@ -40,7 +39,8 @@
                     <th scope="col">Attribution</th>
                     <th scope="col">Nom</th>
                     <th scope="col">Date d'attribution</th>
-                    <th scope="col">Date de restitution</th>
+                    <th scope="col">Mobilite</th>
+                    <th scope="col">Restitution</th>
                     <th scope="col">Action</th>
                 </tr>
                 </thead>
@@ -56,7 +56,17 @@
                         <span th:if="${m.attribueA=='EMPLOYE'}" th:text="${m.employe.nom}"></span>
                     </td>
                     <td th:text="${#dates.format(m.dateAttribution, 'dd-MM-yyyy')}"></td>
-                    <td th:text="${#dates.format(m.dateRestitution, 'dd-MM-yyyy')}"></td>
+                    <td>
+                        <span class="badge bg-success" th:if="${m.materiel.typeMateriel.mobilite == true}">oui</span>
+                        <span class="badge bg-danger" th:if="${m.materiel.typeMateriel.mobilite == false}">non</span>
+                    </td>
+                    <td>
+                        <form action="/restituer-materiel" method="post">
+                            <input type="hidden" name="materielId" value="${m.id}">
+                            <button type="submit" class="btn btn-primary">Restituer</button>
+                        </form>
+                        
+                    </td>
                     <td>
 
                         <a th:href="@{/attribut-materiel-form/{id}(id=${m.id})}" title="Restitution"><i class="fa-solid fa-share-alt-square"></i></a>

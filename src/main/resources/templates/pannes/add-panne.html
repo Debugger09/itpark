@@ -33,16 +33,26 @@
                     </select>
                 </div>
 
-                <div class="col-12">
-                    <label for="dateAchat" class="form-label">Date </label>
-                    <input type="date"  id="dateAchat" class="form-control" th:field="*{dateDiagnostic}" >
-                    <span th:if="${#fields.hasErrors('dateDiagnostic')}" th:errors="*{dateDiagnostic}" class="text-danger"></span>
+                <div class="col-12 mb-3">
+                    <label for="besoinPiece" class="form-label">Besoin de pieces pour la reparation ?</label>
+                    <input type="checkbox" id="besoinPiece" class="form-check-input" th:field="*{besoinPiece}">
                 </div>
 
 
                     <div class="col-12">
                         <label for="description" class="form-label">Description</label>
                         <textarea id="description" class="form-control" rows="5" th:field="*{diagnostic}"> </textarea>
+                    </div>
+
+                    <div class="col-12 mb-3">
+                        <label for="reparable" class="form-label">Ce materiel est-il reparable ?</label>
+                        <input type="checkbox" id="reparable" class="form-check-input" th:field="*{reparable}">
+                    </div>
+
+                    <div class="col-12">
+                        <label for="dateAchat" class="form-label">Date </label>
+                        <input type="date"  id="dateAchat" class="form-control" th:field="*{dateDiagnostic}" >
+                        <span th:if="${#fields.hasErrors('dateDiagnostic')}" th:errors="*{dateDiagnostic}" class="text-danger"></span>
                     </div>
 
 
