@@ -1,14 +1,21 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout}"
->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8">
     <title>Liste des matériels</title>
+    <style>
+        @media print {
+            .suppressionImpression {
+                display: none;
+            }
+            /* Masquer le footer */
+            .footer {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
-
 <div class="container">
     <section class="section" layout:fragment="content">
         <div class="card">
@@ -18,7 +25,7 @@
                         <div class="col-6">
                             <h5>Liste des matériels</h5>
                         </div>
-                        <div class="col-6">
+                        <div class="col-6 suppressionImpression">
                             <div class="filter float-end">
                                 <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots" style="font-size: 29px;"></i></a>
                                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -26,6 +33,7 @@
                                         <h6>Option</h6>
                                     </li>
                                     <li><a class="dropdown-item" th:href="@{/materiel-form}">Ajouter</a></li>
+                                    <li class="dropdown-item" onclick="window.print()">Imprimer</li>
                                 </ul>
                             </div>
                         </div>
@@ -42,7 +50,7 @@
                         <th scope="col">État d'achat</th>
                         <th scope="col">Type de matériel</th>
                         <th scope="col">Mobilité</th>
-                        <th scope="col">Action</th>
+                        <th scope="col" class="suppressionImpression">Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -60,17 +68,11 @@
                             <span class="badge bg-success" th:if="${m.typeMateriel.mobilite}">Oui</span>
                             <span class="badge bg-danger" th:if="${!m.typeMateriel.mobilite}">Non</span>
                         </td>
-                        <td>
-
-
+                        <td class="suppressionImpression">
                             <a th:href="@{/install-logiciel/{id}(id=${m.id})}" title="ajouter un logiciel"><i class="fa-solid fa-plus"></i></a>
-                                <a th:href="@{/materiel-edit/{id}(id=${m.id})}" title="modifier"><i class="fa-solid fa-pen-to-square"></i></a>
-                                <a th:href="@{/materiel-delete/{id}(id=${m.id})}" title="supprimer"><i class="fa-solid fa-trash text-danger"></i></a>
-                                <a th:href="@{/attribut-materiel-form/{id}(id=${m.id})}" title="Attribuer"><i class="fa-solid fa-share"></i></a>
-                            
-                            
-                            
-
+                            <a th:href="@{/materiel-edit/{id}(id=${m.id})}" title="modifier"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a th:href="@{/materiel-delete/{id}(id=${m.id})}" title="supprimer"><i class="fa-solid fa-trash text-danger"></i></a>
+                            <a th:href="@{/attribut-materiel-form/{id}(id=${m.id})}" title="Attribuer"><i class="fa-solid fa-share"></i></a>
                         </td>
                     </tr>
                     </tbody>
@@ -79,7 +81,6 @@
         </div>
     </section>
 </div>
-
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 </html>
