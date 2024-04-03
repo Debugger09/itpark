@@ -5,7 +5,7 @@
 >
 <head>
     <meta charset="UTF-8">
-    <title>Liste des pannes</title>
+    <title>Liste des interventions</title>
 </head>
 <body>
 
@@ -16,7 +16,7 @@
                 <div class="card-title">
                     <div class="row">
                         <div class="col-6">
-                            <h5>Liste des pannes</h5>
+                            <h5>Liste des interventions</h5>
                         </div>
                         <div class="col-6">
                             <div class="filter float-end">
@@ -35,32 +35,24 @@
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Materiel</th>
-                        <th scope="col">Diagnostic</th>
+                        <th scope="col">Panne</th>
+                        <th scope="col">Action requise</th>
+                        <th scope="col">Décision</th>
                         <th scope="col">Date</th>
-                        <th scope="col">Reparable</th>
-                        <th scope="col">Besoin de pieces</th>
+                        <th scope="col">Technicien</th>
 
 
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="m: ${pannes}">
+                    <tr th:each="m: ${interventions}">
                         <td th:text="${m.id}"></td>
-                        <td th:text="${m.materiel.libelle}"></td>
-
-                        <td th:text="${m.diagnostic}"></td>
-
-                        <td th:text="${#dates.format(m.dateDiagnostic, 'dd-MM-yyyy')}"></td>
-                        <td>
-                            <span class="badge bg-success" th:if="${m.reparable != null && m.reparable}">Oui</span>
-                            <span class="badge bg-danger" th:if="${m.reparable != null && !m.reparable}">Non</span>
-                        </td>
-                        <td>
-                            <span class="badge bg-success" th:if="${m.besoinPiece != null && m.besoinPiece}">Oui</span>
-                            <span class="badge bg-danger" th:if="${m.besoinPiece != null && !m.besoinPiece}">Non</span>
-                        </td>
+                        <td th:text="${m.panne.diagnostic}"></td>
+                        <td th:text="${m.actionRequise}"></td>
+                        <td th:text="${m.decision}"></td>
+                        <td th:text="${#dates.format(m.dateIntervention, 'dd-MM-yyyy')}"></td>
+                        <td th:text="${m.technicien.name}"></td>
                         <td>
                             <a th:href="@{/panne-edit/{id}(id=${m.id})}"><i class="fa-solid fa-pen-to-square"></i></a>
                             <a th:href="@{/panne-delete/{id}(id=${m.id})}"><i class="fa-solid fa-trash text-danger"></i></a>

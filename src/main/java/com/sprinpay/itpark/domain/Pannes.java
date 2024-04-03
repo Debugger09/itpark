@@ -14,6 +14,9 @@ public class Pannes {
     private Boolean besoinPiece;
     private Date dateDiagnostic;
 
+    private Long inventaireId;
+
+
     @ManyToOne
     @JoinColumn(name = "id_materiel")
     private Materiels materiel;
@@ -68,15 +71,24 @@ public class Pannes {
         this.besoinPiece = besoinPiece;
     }
 
+    public Long getInventaireId() {
+        return inventaireId;
+    }
+
+    public void setInventaireId(Long inventaireId) {
+        this.inventaireId = inventaireId;
+    }
+
     @Override
     public String toString() {
         return "Pannes{" +
                 "id=" + id +
                 ", diagnostic='" + diagnostic + '\'' +
+                ", reparable=" + reparable +
                 ", besoinPiece=" + besoinPiece +
                 ", dateDiagnostic=" + dateDiagnostic +
+                ", inventaireId=" + inventaireId +
                 ", materiel=" + materiel +
-                ", reparable=" + reparable +
                 '}';
     }
 }

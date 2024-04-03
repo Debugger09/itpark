@@ -1,5 +1,6 @@
 package com.sprinpay.itpark.domain;
 
+import com.sprinpay.itpark.domain.enums.ROLE;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
@@ -19,6 +20,9 @@ public class User {
     @NotBlank(message = "Champ requis")
     private String password;
     private boolean status;
+
+    @Enumerated(EnumType.STRING)
+    private ROLE role;
 
     public String getName() {
         return name;
@@ -60,20 +64,12 @@ public class User {
         return id;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
-        User user = (User) o;
-        return status == user.status && Objects.equals(id, user.id) && Objects.equals(name, user.name)
-                && Objects.equals(login, user.login) && Objects.equals(password, user.password);
+    public ROLE getRole() {
+        return role;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, login, password, status);
+    public void setRole(ROLE role) {
+        this.role = role;
     }
 
     @Override
@@ -84,6 +80,7 @@ public class User {
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", status=" + status +
+                ", role=" + role +
                 '}';
     }
 }

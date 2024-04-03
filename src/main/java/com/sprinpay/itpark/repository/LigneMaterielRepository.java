@@ -7,6 +7,7 @@ import com.sprinpay.itpark.domain.LigneMateriel;
 public interface LigneMaterielRepository extends JpaRepository<LigneMateriel, Long> {
 
     LigneMateriel findByMateriel_IdAndDateAttributionTrue(Long materielId);
+    LigneMateriel findByMateriel_Id(Long materielId);
 
     Long countByDateAttributionTrue();
 

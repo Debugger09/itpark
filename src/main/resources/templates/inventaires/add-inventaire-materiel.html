@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Inventaire</title>
+</head>
+<body>
+<div class="row justify-content-center" layout:fragment="content">
+
+<div class="card">
+    <div class="card-header">Inventaire</div>
+    <div class="card-body profile">
+        <div class="row mb-3">
+            <div class="col-lg-3 col-md-4 fw-bold ">Inventaire</div>
+           <div class="col-lg-9 col-md-8">
+               Inventaire N_ <span  th:text="${inventaire.id}"></span>
+           </div>
+        </div>
+        <div class="row  mb-3">
+            <div class="col-lg-3 col-md-4 label fw-bold">Technicien</div>
+            <div class="col-lg-9 col-md-8" th:text="${inventaire.technicien.name}"></div>
+        </div>
+
+        <div class="row  mb-3">
+            <div class="col-lg-3 col-md-4 label fw-bold">Status</div>
+            <div class="col-lg-9 col-md-8">
+                <span class="badge bg-success" th:if="${!inventaire.closeInventaire}">En cours</span>
+                <span class="badge bg-danger" th:if="${inventaire.closeInventaire}">Fermer</span>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+    <div class="card">
+        <div class="card-header">  <h6>Ajouter un materiel</h6></div>
+        <div class="card-body">
+            <div class="row bt-5" th:if="${!inventaire.closeInventaire}">
+                <div class="col-md-12">
+
+                    <form th:object="${ligneInventaireDTO}" method="post" th:action="@{/add-ligne-inventaire-materiel}" class="row">
+                        <input  th:field="*{inventaireId}"  type="hidden" class="form-control">
+                        <div class="col-12">
+                            <label for="typeLogicielId" class="form-label">Materiel</label>
+                            <select id="typeLogicielId" class="form-select" th:field="*{materielId}">
+                                <option value=""></option>
+                                <option th:each="l : ${materiels}" th:value="${l.id}" th:text="${l.libelle}"></option>
+                            </select>
+                        </div>
+
+                        <div class="col-12 my-3">
+                            <div class="form-check">
+                                <label class="form-check-label" for="status">
+                                    Ce Materiel est en panne ?
+                                </label>
+
+                                <input class="form-check-input" type="checkbox"  id="status" th:field="*{etat}">
+                            </div>
+                        </div>
+
+                        <div class="col-12  mb-3">
+                            <label for="observation" class="form-label">Observation</label>
+                            <textarea id="observation" class="form-control" rows="5" th:field="*{observation}"> </textarea>
+                        </div>
+
+                        <div class="col-12" th:if="${error}">
+                           <span class="text-danger" th:text="${error}"></span>
+                        </div>
+
+
+                        <div class="col-12 mt-3">
+                            <button class="btn btn-primary float-end">Ajouter</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row bt-5">
+                <div class="col-md-12">
+                    <h6>Materiels</h6>
+                </div>
+                <div class="col-md-12">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Materiel</th>
+                            <th scope="col">Etat</th>
+                            <th scope="col">Observation</th>
+                            <th scope="col" th:if="${!inventaire.closeInventaire}">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="m: ${materielByInventaires}">
+                            <td th:text="${m.id}"></td>
+                            <td th:text="${m.materiel.libelle}"></td>
+                            <td>
+                                <span class="badge bg-success" th:if="${!m.etat}">FONCTIONEL</span>
+                                <span class="badge bg-danger" th:if="${m.etat}">EN PANNE</span>
+                            </td>
+                            <td th:text="${m.observation}"></td>
+                            <td th:if="${!inventaire.closeInventaire}">
+                                <a th:href="@{/ligne-inventaire-delete/{id}(id=${m.id})}" title="Désinstaller" ><i class="fa-solid fa-trash text-danger"></i></a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

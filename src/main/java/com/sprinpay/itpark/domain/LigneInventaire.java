@@ -20,8 +20,7 @@ public class LigneInventaire {
     @Column(name = "observation", length = 100)
     private String observation;
 
-    @Column(name = "etat", length = 50)
-    private String etat;
+    private boolean etat;
 
     // Getters and setters
     public Long getId() {
@@ -56,11 +55,11 @@ public class LigneInventaire {
         this.observation = observation;
     }
 
-    public String getEtat() {
+    public boolean getEtat() {
         return etat;
     }
 
-    public void setEtat(String etat) {
+    public void setEtat(boolean etat) {
         this.etat = etat;
     }
 

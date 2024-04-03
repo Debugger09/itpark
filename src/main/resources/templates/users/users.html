@@ -39,6 +39,7 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">Nom</th>
+            <th scope="col">ROLE</th>
             <th scope="col">Status</th>
             <th scope="col">Action</th>
 
@@ -50,6 +51,7 @@
           <tr th:each="user: ${users}">
             <td th:text="${user.id}"></td>
             <td th:text="${user.name}"></td>
+            <td th:text="${user.role}"></td>
 
             <td>
               <span class="badge bg-success" th:if="${user.status == true}">Activer</span>

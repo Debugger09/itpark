@@ -6,7 +6,9 @@ import java.util.Optional;
 import com.sprinpay.itpark.domain.Interventions;
 import com.sprinpay.itpark.repository.InterventionsRepository;
 import com.sprinpay.itpark.services.InterventionsService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class InterventionsServiceImpl implements InterventionsService {
     private final InterventionsRepository interventionsRepository;
 

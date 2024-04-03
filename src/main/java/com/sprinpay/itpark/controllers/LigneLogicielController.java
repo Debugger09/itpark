@@ -72,7 +72,7 @@ public class LigneLogicielController {
 
 
     @GetMapping("/ligne-logiciel-delete/{id}")
-    public String deleteLogiciel(@PathVariable Long id, Model model) {
+    public String deleteLogicielLigne(@PathVariable Long id, Model model) {
         Optional<LigneLogiciel> ligneLogiciel=ligneLogicielRepository.findById(id);
         if(ligneLogiciel.isPresent()){
             ligneLogicielService.deleteById(id);

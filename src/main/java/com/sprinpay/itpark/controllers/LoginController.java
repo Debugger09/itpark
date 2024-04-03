@@ -36,7 +36,13 @@ public class LoginController {
         User user=userRepository.findByLoginAndPassword(loginDTO.getUserName(), loginDTO.getPassword());
 
         if(user!=null){
-            return "redirect:/dashboard";
+            if(user.isStatus()){
+                return "redirect:/dashboard";
+            }else{
+                model.addAttribute("error","Compte bloqué");
+                return "login";
+            }
+
         }else {
             model.addAttribute("error","nom d'utilisateur ou mot de passe incorrete ");
             return "login";

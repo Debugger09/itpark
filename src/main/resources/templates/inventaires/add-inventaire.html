@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+>
+<head>
+    <meta charset="UTF-8">
+    <title th:if="${inventaire.id !=null}">Modifier un inventaire</title>
+    <title th:if="${inventaire.id ==null}">Ajouter un inventaire</title>
+</head>
+<body>
+
+<div class="row justify-content-center" layout:fragment="content">
+    <div class="col-10">
+        <form th:object="${inventaire}" method="post" th:action="@{/inventaire}" class="row" >
+        <div class="card">
+            <div class="card-header" th:if="${inventaire.id !=null}">
+               Modifier un inventaire
+            </div>
+
+            <div class="card-header" th:if="${inventaire.id ==null}">
+                Ajouter un inventaire
+            </div>
+            <div class="card-body">
+
+                <input type="hidden" th:field="*{id}" >
+
+                <div class="col-12">
+                    <label for="typeLogicielId" class="form-label">Responsable (Technicien) </label>
+                    <select id="typeLogicielId" class="form-select" th:field="*{technicienId}">
+                        <option value=""></option>
+                        <option th:each="t : ${techniciens}" th:value="${t.id}" th:text="${t.name}"></option>
+                    </select>
+                </div>
+
+
+                <div class="col-12  mb-3">
+                    <label for="datInventaire" class="form-label">Date de l'inventaire</label>
+                    <input type="date"  id="datInventaire" class="form-control" th:field="*{datInventaire}" >
+                    <span th:if="${#fields.hasErrors('datInventaire')}" th:errors="*{datInventaire}" class="text-danger"></span>
+                </div>
+
+            </div>
+            <div class="card-footer">
+                <div class="col-12">
+                    <button class="btn btn-primary float-end" th:if="${inventaire.id ==null}">Ajouter</button>
+                    <button class="btn btn-primary float-end" th:if="${inventaire.id !=null}">Modifier</button>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>
