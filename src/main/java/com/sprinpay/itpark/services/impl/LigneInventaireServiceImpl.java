@@ -63,12 +63,20 @@ public class LigneInventaireServiceImpl implements LigneInventaireService {
         Optional<Inventaires> inventaires=inventairesRepository.findById(ligneInventaireDTO.getInventaireId());
         inventaires.ifPresent(ligneInventaire::setInventaire);
         LigneInventaire ligneInventaire1= ligneInventaireRepository.save(ligneInventaire);
+        /**
+         * On cree la panne si le materiel est declare en panne
+         */
+        if(ligneInventaireDTO.getEtat()){
 
-        Pannes pannes=new Pannes();
-        pannes.setInventaireId(ligneInventaire1.getInventaire().getId());
-        pannes.setDateDiagnostic(new Date());
-        pannes.setDiagnostic("Lors de l'inventaire");
-        pannesRepository.save(pannes);
+            Pannes pannes=new Pannes();
+            pannes.setInventaireId(ligneInventaire1.getInventaire().getId());
+            materiels.ifPresent(pannes::setMateriel);
+
+            pannes.setDateDiagnostic(new Date());
+            pannes.setDiagnostic("Lors de l'inventaire");
+            pannesRepository.save(pannes);
+        }
+
 
         System.out.println(ligneInventaire);
 

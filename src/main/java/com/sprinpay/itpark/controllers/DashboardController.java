@@ -14,13 +14,15 @@ public class DashboardController {
 
     private final LigneMaterielRepository ligneMaterielRepository;
     private final PannesRepository pannesRepository;
+    private final InventairesRepository inventairesRepository;
 
-    public DashboardController(EmployesRepository employesRepository, MaterielsRepository materielsRepository, LogicielsRepository logicielsRepository, LigneMaterielRepository ligneMaterielRepository, PannesRepository pannesRepository) {
+    public DashboardController(EmployesRepository employesRepository, MaterielsRepository materielsRepository, LogicielsRepository logicielsRepository, LigneMaterielRepository ligneMaterielRepository, PannesRepository pannesRepository, InventairesRepository inventairesRepository) {
         this.employesRepository = employesRepository;
         this.materielsRepository = materielsRepository;
         this.logicielsRepository = logicielsRepository;
         this.ligneMaterielRepository = ligneMaterielRepository;
         this.pannesRepository = pannesRepository;
+        this.inventairesRepository = inventairesRepository;
     }
 
     @GetMapping("/dashboard")
@@ -31,6 +33,7 @@ public class DashboardController {
         model.addAttribute("logiciel",logicielsRepository.count());
         model.addAttribute("attribue",ligneMaterielRepository.countByDateAttributionTrue());
         model.addAttribute("pannes",pannesRepository.count());
+        model.addAttribute("inventaires",inventairesRepository.count());
 
         return "dashboard";
     }

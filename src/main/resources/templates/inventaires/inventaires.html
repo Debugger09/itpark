@@ -53,8 +53,8 @@
 
                         <td>
                             <a th:href="@{/effectue-inventaire/{id}(id=${m.id})}" class="mx-1"><i class="bi bi-eye"></i></a>
-                            <a th:href="@{/fermer-inventaire/{id}(id=${m.id})}" th:if="${!m.closeInventaire}" class="mx-1"><i class="bi bi-unlock text-primary"></i></a>
-                            <i class="bi bi-lock text-danger mx-1"  th:if="${m.closeInventaire}"></i>
+                            <a th:href="@{/fermer-inventaire/{id}(id=${m.id})}" th:if="${!m.closeInventaire}" class="mx-1" title="Cloturer l'inventaire"><i class="bi bi-unlock text-primary"></i></a>
+                            <i class="bi bi-lock text-danger mx-1"  th:if="${m.closeInventaire}" title="inventaire cloturer"></i>
 
                         </td>
                     </tr>
