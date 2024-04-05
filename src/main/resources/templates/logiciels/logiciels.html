@@ -58,7 +58,9 @@
                         <td th:text="${m.typeLogiciel==null?'--':m.typeLogiciel.libelle}"></td>
                         <td th:text="${m.description}"></td>
                         <td>
-                            <!--span th:if="${m.dateExpiration.before(#dates.format(#dates.createNow(),'dd-MM-yyyy'))}" class="badge bg-danger"> Expirer</span-->
+                            <span th:if="${m.dateExpiration.before(#dates.createNow())}" class="badge bg-danger">Expiré</span>
+                            <span th:if="${m.dateExpiration.after(#dates.createNow())}" class="badge bg-success">En cours</span>
+
 
                         </td>
                         <td>
