@@ -2,6 +2,7 @@ package com.sprinpay.itpark.domain;
 
 import java.util.Date;
 import jakarta.persistence.*;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 @Entity
 @Table(name = "pannes")

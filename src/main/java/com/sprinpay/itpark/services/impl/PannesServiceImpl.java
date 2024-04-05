@@ -61,12 +61,13 @@ public class PannesServiceImpl implements PannesService {
         panne.setDiagnostic(panneDTO.getDiagnostic());
         panne.setDateDiagnostic(panneDTO.getDateDiagnostic());
         panne.setBesoinPiece(panneDTO.getBesoinPiece());
+        panne.setDecision(false);
         /*
             Si le materiel n'es plus reparable on met panne automatiquement a false
          */
         if(!panneDTO.getReparable()){
             panne.setBesoinPiece(false);
-            panne.setDecision(false);
+
         }else{
             LigneMateriel ligneMateriel=ligneMaterielRepository.findByMateriel_Id(panneDTO.getMaterielId());
             /*
