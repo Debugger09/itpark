@@ -66,6 +66,7 @@ public class PannesServiceImpl implements PannesService {
          */
         if(!panneDTO.getReparable()){
             panne.setBesoinPiece(false);
+            panne.setDecision(false);
         }else{
             LigneMateriel ligneMateriel=ligneMaterielRepository.findByMateriel_Id(panneDTO.getMaterielId());
             /*

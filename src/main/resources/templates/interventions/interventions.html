@@ -18,17 +18,6 @@
                         <div class="col-6">
                             <h5>Liste des interventions</h5>
                         </div>
-                        <div class="col-6">
-                            <div class="filter float-end">
-                                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots" style="font-size: 29px;"></i></a>
-                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                    <li class="dropdown-header text-start">
-                                        <h6>Option</h6>
-                                    </li>
-                                    <li><a class="dropdown-item">Ajouter</a></li>
-                                </ul>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <table class="table">
@@ -40,9 +29,6 @@
                         <th scope="col">Décision</th>
                         <th scope="col">Date</th>
                         <th scope="col">Technicien</th>
-
-
-                        <th scope="col">Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -50,17 +36,14 @@
                         <td th:text="${m.id}"></td>
                         <td th:text="${m.panne.diagnostic}"></td>
                         <td th:text="${m.actionRequise}"></td>
-                        <td th:text="${m.decision}"></td>
-                        <td th:text="${#dates.format(m.dateIntervention, 'dd-MM-yyyy')}"></td>
-                        <td th:text="${m.technicien.name}"></td>
-                        <td>
-                            <a th:href="@{/panne-edit/{id}(id=${m.id})}"><i class="fa-solid fa-pen-to-square"></i></a>
-                            <a th:href="@{/panne-delete/{id}(id=${m.id})}"><i class="fa-solid fa-trash text-danger"></i></a>
-
-                            <a th:href="@{/panne-delete/{id}(id=${m.id})}" title="Intervention"><i class="bi bi-wrench"></i></a>
-
+                        <td >
+                            <span class="badge bg-success" th:if="${m.decision}">REPARER</span>
+                            <span class="badge bg-danger" th:if="${!m.decision}">NON REPARER</span>
 
                         </td>
+                        <td th:text="${#dates.format(m.dateIntervention, 'dd-MM-yyyy')}"></td>
+                        <td th:text="${m.technicien.name}"></td>
+
                     </tr>
                     </tbody>
                 </table>

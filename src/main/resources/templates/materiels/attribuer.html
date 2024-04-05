@@ -62,7 +62,7 @@
                     <div class="row mb-3">
                         <label for="dateAttribution" class="col-sm-2 col-form-label">Date d'attribution</label>
                         <div class="col-sm-10">
-                            <input type="date" id="dateAttribution" class="form-control" th:field="*{dateAttribution}">
+                            <input type="date" id="dateAttribution" class="form-control" th:field="*{dateAttribution}" th:min="${#dates.format(#dates.createNow(),'yyyy-MM-dd')}">
                             <span th:if="${#fields.hasErrors('dateAttribution')}" th:errors="*{dateAttribution}" class="text-danger"></span>
                         </div>
                     </div>

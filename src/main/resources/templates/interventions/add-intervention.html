@@ -11,65 +11,94 @@
 <body>
 
 <div class="row justify-content-center" layout:fragment="content">
-    <div class="col-10">
-        <form th:object="${interventionDTO}" method="post" th:action="@{/interventions}" class="row">
-        <div class="card">
-            <div class="card-header" th:if="${interventionDTO.id !=null}">
-               Modifier une intervention
+    <div class="card">
+        <div class="card-header">Panne</div>
+        <div class="card-body profile">
+            <div class="row mb-3">
+                <div class="col-lg-3 col-md-4 fw-bold ">Inventaire</div>
+                <div class="col-lg-9 col-md-8">
+                    Panne N_ <span  th:text="${panne.id}"></span>
+                </div>
+            </div>
+            <div class="row  mb-3">
+                <div class="col-lg-3 col-md-4 label fw-bold">Materiel</div>
+                <div class="col-lg-9 col-md-8" th:text="${panne.materiel.libelle}"></div>
             </div>
 
-            <div class="card-header" th:if="${interventionDTO.id ==null}">
+            <div class="row  mb-3">
+                <div class="col-lg-3 col-md-4 label fw-bold">Modèle</div>
+                <div class="col-lg-9 col-md-8" th:text="${panne.materiel.modele}"></div>
+            </div>
+
+            <div class="row  mb-3">
+                <div class="col-lg-3 col-md-4 label fw-bold">Besoin de piece?</div>
+                <div class="col-lg-9 col-md-8">
+                    <span class="badge bg-success" th:if="${panne.besoinPiece != null && panne.besoinPiece}">Oui</span>
+                    <span class="badge bg-danger" th:if="${panne.besoinPiece != null && !panne.besoinPiece}">Non</span>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <form th:object="${interventionDTO}" method="post" th:action="@{/interventions}" class="row">
+        <div class="card">
+
+
+            <div class="card-header" >
                 Ajouter une intervention
             </div>
             <div class="card-body">
 
-                <input type="hidden" th:field="*{id}" >
+                <input type="hidden" th:field="*{panneId}" >
 
                 <div class="col-12">
-                    <label for="typeLogicielId" class="form-label">Panne</label>
-                    <select id="typeLogicielId" class="form-select" th:field="*{panneId}">
+                    <label for="typeLogicielId" class="form-label">Technicien</label>
+                    <select id="typeLogicielId" class="form-select" th:field="*{technicienId}">
                         <option value=""></option>
-                        <option th:each="m : ${pannes}" th:value="${m.id}" th:text="${m.diagnostic}"></option>
+                        <option th:each="m : ${techniciens}" th:value="${m.id}" th:text="${m.name}"></option>
                     </select>
                 </div>
 
 
 
 
-                    <div class="col-12  mb-3">
-                        <label for="description" class="form-label">Action requise</label>
-                        <textarea id="description" class="form-control" rows="5" th:field="*{actionRequise}"> </textarea>
-                    </div>
-
-
-
-                    <div class="col-12  mb-3">
-                        <label for="dateAchat" class="form-label">Date </label>
-                        <input type="date"  id="dateAchat" class="form-control" th:field="*{dateDiagnostic}" >
-                        <span th:if="${#fields.hasErrors('dateDiagnostic')}" th:errors="*{dateDiagnostic}" class="text-danger"></span>
-                    </div>
-
-                <div class="col-12 mb-3">
-                    <label for="reparable" class="form-label">Ce materiel est-il reparable ?</label>
-                    <input type="checkbox" id="reparable" class="form-check-input" th:field="*{reparable}">
+                <div class="col-12  mb-3">
+                    <label for="description" class="form-label">Action requise</label>
+                    <textarea id="description" class="form-control" rows="5" th:field="*{actionRequise}"> </textarea>
                 </div>
 
-                <div class="col-12 mb-3">
-                    <label for="besoinPiece" class="form-label">Besoin de pieces pour la reparation ?</label>
-                    <input type="checkbox" id="besoinPiece" class="form-check-input" th:field="*{besoinPiece}">
+
+
+                <div class="col-12  mb-3">
+                    <label for="dateAchat" class="form-label">Date de l'intervention </label>
+                    <input type="date"  id="dateAchat" class="form-control" th:field="*{dateIntervention}" th:min="${#dates.format(#dates.createNow(),'yyyy-MM-dd')}">
+                    <span th:if="${#fields.hasErrors('dateIntervention')}" th:errors="*{dateIntervention}" class="text-danger"></span>
+                </div>
+
+
+
+                <div class="col-12 my-3">
+                    <label for="besoinPiece" class="form-label">La panne a pu être réparée ?</label>
+                    <input type="checkbox" id="besoinPiece" class="form-check-input" th:field="*{decision}">
                 </div>
 
 
             </div>
             <div class="card-footer">
                 <div class="col-12">
-                    <button class="btn btn-primary float-end" th:if="${interventionDTO.id ==null}">Ajouter</button>
-                    <button class="btn btn-primary float-end" th:if="${interventionDTO.id !=null}">Modifier</button>
+                    <button class="btn btn-primary float-end">Ajouter</button>
+
                 </div>
             </div>
         </div>
-        </form>
-    </div>
+    </form>
+
+
+
+
 
 </div>
 

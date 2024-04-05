@@ -6,4 +6,5 @@ import com.sprinpay.itpark.domain.Interventions;
 
 public interface InterventionsRepository extends JpaRepository<Interventions, Long> {
 
+    Long countByDecisionTrue();
 }

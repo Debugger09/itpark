@@ -3,6 +3,7 @@ package com.sprinpay.itpark.domain;
 import java.util.Date;
 
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "interventions")
@@ -13,7 +14,8 @@ public class Interventions {
     private String responsable;
 
     private String actionRequise;
-    private String decision;
+    private boolean decision;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateIntervention;
 
     @ManyToOne
@@ -31,7 +33,7 @@ public class Interventions {
         return responsable;
     }
 
-    public String getDecision() {
+    public boolean getDecision() {
         return decision;
     }
 
@@ -52,7 +54,7 @@ public class Interventions {
         this.responsable = responsable;
     }
 
-    public void setDecision(String decision) {
+    public void setDecision(boolean decision) {
         this.decision = decision;
     }
 

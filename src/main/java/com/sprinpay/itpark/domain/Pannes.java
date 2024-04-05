@@ -11,6 +11,8 @@ public class Pannes {
     private Long id;
     private String diagnostic;
     private Boolean reparable;
+
+    private Boolean decision;
     private Boolean besoinPiece;
     private Date dateDiagnostic;
 
@@ -78,12 +80,21 @@ public class Pannes {
         this.inventaireId = inventaireId;
     }
 
+    public Boolean getDecision() {
+        return decision;
+    }
+
+    public void setDecision(Boolean decision) {
+        this.decision = decision;
+    }
+
     @Override
     public String toString() {
         return "Pannes{" +
                 "id=" + id +
                 ", diagnostic='" + diagnostic + '\'' +
                 ", reparable=" + reparable +
+                ", decision=" + decision +
                 ", besoinPiece=" + besoinPiece +
                 ", dateDiagnostic=" + dateDiagnostic +
                 ", inventaireId=" + inventaireId +

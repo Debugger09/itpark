@@ -67,7 +67,7 @@
                             <a th:href="@{/panne-edit/{id}(id=${m.id})}"><i class="fa-solid fa-pen-to-square"></i></a>
                             <a th:href="@{/panne-delete/{id}(id=${m.id})}"><i class="fa-solid fa-trash text-danger"></i></a>
 
-                            <a th:href="@{/panne-delete/{id}(id=${m.id})}" title="Intervention"><i class="bi bi-wrench"></i></a>
+                            <a th:href="@{/intervention-form/{id}(id=${m.id})}" title="Intervention" th:if="${m.reparable && !m.decision}"><i class="bi bi-wrench"></i></a>
 
 
                         </td>

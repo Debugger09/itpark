@@ -1,5 +1,7 @@
 package com.sprinpay.itpark.services.dto;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class InterventionDTO {
@@ -8,7 +10,8 @@ public class InterventionDTO {
     private String responsable;
 
     private String actionRequise;
-    private String decision;
+    private boolean decision;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateIntervention;
 
     private Long technicienId;
@@ -39,11 +42,11 @@ public class InterventionDTO {
         this.actionRequise = actionRequise;
     }
 
-    public String getDecision() {
+    public boolean isDecision() {
         return decision;
     }
 
-    public void setDecision(String decision) {
+    public void setDecision(boolean decision) {
         this.decision = decision;
     }
 
@@ -77,7 +80,7 @@ public class InterventionDTO {
                 "id=" + id +
                 ", responsable='" + responsable + '\'' +
                 ", actionRequise='" + actionRequise + '\'' +
-                ", decision='" + decision + '\'' +
+                ", decision=" + decision +
                 ", dateIntervention=" + dateIntervention +
                 ", technicienId=" + technicienId +
                 ", panneId=" + panneId +
