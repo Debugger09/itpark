@@ -1,7 +1,6 @@
 package com.sprinpay.itpark.domain;
 
 import java.sql.Date;
-import java.util.Objects;
 
 import jakarta.persistence.*;
 
@@ -29,15 +28,13 @@ public class Inventaires {
         return datInventaire;
     }
 
-
-
     // Setters
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setDatInventaire(Date date_inventaire) {
-        this.datInventaire = date_inventaire;
+    public void setDatInventaire(Date datInventaire) {
+        this.datInventaire = datInventaire;
     }
 
     public User getTechnicien() {

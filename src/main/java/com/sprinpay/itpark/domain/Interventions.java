@@ -1,7 +1,6 @@
 package com.sprinpay.itpark.domain;
 
 import java.util.Date;
-import java.util.Objects;
 
 import jakarta.persistence.*;
 
@@ -32,12 +31,9 @@ public class Interventions {
         return responsable;
     }
 
-
     public String getDecision() {
         return decision;
     }
-
-
 
     public User getTechnicien() {
         return technicien;
@@ -56,11 +52,9 @@ public class Interventions {
         this.responsable = responsable;
     }
 
-
     public void setDecision(String decision) {
         this.decision = decision;
     }
-
 
     public void setTechnicien(User technicien) {
         this.technicien = technicien;
