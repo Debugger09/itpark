@@ -71,11 +71,12 @@ public class PannesServiceImpl implements PannesService {
             /*
                 Si le materiel est deja attribué et qu'il ne peut plus etre reparé on restitue le materiel si ce n'est pas encore fait
             * */
-            if(ligneMateriel.getDateAttribution()!=null){
+            if(ligneMateriel!=null && ligneMateriel.getDateAttribution()!=null){
                 ligneMateriel.setDateRestitution(new Date());
+                ligneMaterielRepository.save(ligneMateriel);
             }
 
-            ligneMaterielRepository.save(ligneMateriel);
+
         }
         panne.setReparable(panneDTO.getReparable());
 

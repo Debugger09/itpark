@@ -48,7 +48,9 @@
                     <tbody>
                     <tr th:each="m: ${pannes}">
                         <td th:text="${m.id}"></td>
-                        <td th:text="${m.materiel.libelle}"></td>
+                        <td th:text="${m.materiel.libelle}">
+
+                        </td>
 
                         <td th:text="${m.diagnostic}"></td>
 

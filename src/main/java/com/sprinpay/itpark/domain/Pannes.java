@@ -18,7 +18,6 @@ public class Pannes {
 
 
     @ManyToOne
-    @JoinColumn(name = "id_materiel")
     private Materiels materiel;
 
     // Getters
