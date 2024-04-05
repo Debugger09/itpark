@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -94,6 +95,18 @@ public class LigneMaterielController {
 
         ligneMaterielService.save(ligneMaterielDTO);
         return "redirect:/materiels";
+    }
+
+    @GetMapping("/restituer-materiel/{id}")
+    public String restituerMateriel(@PathVariable Long id) {
+        System.out.println("============"+id);
+        Optional<LigneMateriel> ligneMateriel=ligneMaterielRepository.findById(id);
+        if(ligneMateriel.isPresent()){
+            ligneMateriel.get().setDateRestitution(new Date());
+            ligneMaterielRepository.save(ligneMateriel.get());
+        }
+
+        return "redirect:/attributions";
     }
 
 }

@@ -9,7 +9,7 @@
 <body>
 <div class="container">
   <form  th:object="${loginDTO}" method="post" th:action="@{/login}" >
-    <p>Bienvenue</p>
+    <p>ITPARK</p>
     <input type="text"  placeholder="username" th:field="*{userName}" /><br>
     <span th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" style="color: red;"></span><br>
     <input type="password" name="password" placeholder="Mot de passe" th:field="*{password}"><br>
