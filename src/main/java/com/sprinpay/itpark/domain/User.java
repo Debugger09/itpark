@@ -4,8 +4,6 @@ import com.sprinpay.itpark.domain.enums.ROLE;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
-import java.util.Objects;
-
 @Entity
 @Table(name = "users")
 public class User {

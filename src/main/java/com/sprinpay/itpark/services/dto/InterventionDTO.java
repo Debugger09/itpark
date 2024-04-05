@@ -1,13 +1,8 @@
 package com.sprinpay.itpark.services.dto;
 
-import com.sprinpay.itpark.domain.Pannes;
-import com.sprinpay.itpark.domain.Techniciens;
-import jakarta.persistence.*;
-
 import java.util.Date;
 
 public class InterventionDTO {
-
 
     private Long id;
     private String responsable;
